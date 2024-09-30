@@ -1,8 +1,12 @@
+import ExpenseTracker from "./MainPage/ExpenseTracker";
+import { SnackbarProvider } from "notistack";
+
 function App() {
   return (
-    <>
-      <h1>Expense Tracker</h1>
-    </>
+    <SnackbarProvider>
+      <ExpenseTracker />
+      {/* <Modal isOpen={true} /> */}
+    </SnackbarProvider>
   );
 }
 
