@@ -64,10 +64,18 @@ function ModalForm({
               <option value="DEFAULT" disabled hidden>
                 Select category
               </option>
-              <option value="Entertainment">Entertainment</option>
-              <option value="Food">Food</option>
-              <option value="Travel">Travel</option>
-              <option value="Others">Others</option>
+              <option required value="Entertainment">
+                Entertainment
+              </option>
+              <option required value="Food">
+                Food
+              </option>
+              <option required value="Travel">
+                Travel
+              </option>
+              <option required value="Others">
+                Others
+              </option>
             </select>
             <input
               placeholder="dd/mm/yyyy"
