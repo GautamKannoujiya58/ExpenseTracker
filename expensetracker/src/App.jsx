@@ -5,7 +5,6 @@ function App() {
   return (
     <SnackbarProvider>
       <ExpenseTracker />
-      {/* <Modal isOpen={true} /> */}
     </SnackbarProvider>
   );
 }
