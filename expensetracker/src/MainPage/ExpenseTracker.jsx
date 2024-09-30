@@ -37,6 +37,12 @@ function ExpenseTracker() {
       });
       return;
     }
+    if (category === "DEFAULT") {
+      enqueueSnackbar("Please select a category", {
+        variant: "warning",
+      });
+      return;
+    }
 
     setBalance((prevBalance) => prevBalance - Number(addedExpense));
     setExpense((prevExpense) => Number(prevExpense) + Number(addedExpense));
