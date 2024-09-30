@@ -5,7 +5,6 @@ function ModalForm({
   buttonId,
   handleBalanceSubmit,
   addedBalance,
-  //   lsldflaslaslasdk
   setAddedBalance,
   handleExpenseSubmit,
   title,
