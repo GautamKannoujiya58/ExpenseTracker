@@ -1,6 +1,7 @@
 import Transactions from "../components/Transactions/Transactions";
 import { useSnackbar } from "notistack";
 import { useEffect, useState } from "react";
+import ExpensePieChart from "../components/ExpensePieChart/ExpensePieChart";
 
 function ExpenseTracker() {
   // const [balance, setBalance] = useState(5000);
@@ -24,14 +25,17 @@ function ExpenseTracker() {
   });
 
   // storing the added list
-  const [expensesList, setExpensesList] = useState([]);
+  const [expensesList, setExpensesList] = useState(
+    () => JSON.parse(localStorage.getItem("expensesList")) || []
+  );
+  // console.log("ExpenseList >>>>", expensesList);
 
   const handleFormInputChange = (e) => {
     const { name, value } = e.target;
     setExpenseFormValues({ ...expenseFormValues, [name]: value });
   };
   console.log("expenseForm >>>", expenseFormValues);
-  console.log("ExpenseList >>>", expensesList);
+  // console.log("ExpenseList >>>", expensesList);
   // imported enqueSnackbar for alerts
   const { enqueueSnackbar } = useSnackbar();
   // console.log("AddedBalance >>>", addedBalance);
@@ -45,6 +49,8 @@ function ExpenseTracker() {
   );
   console.log("Balance >>>", balance);
   console.log("Expense >>>", expense);
+
+  console.log("ExpenseListfromLocal >>>", localStorage.getItem("expenseList"));
 
   // Why Lazy initialization:
   // In your case, you're fetching the initial balance from localStorage,
@@ -60,6 +66,10 @@ function ExpenseTracker() {
   useEffect(() => {
     localStorage.setItem("totalExpense", expense);
   }, [expense]);
+
+  useEffect(() => {
+    localStorage.setItem("expensesList", JSON.stringify(expensesList));
+  }, [expensesList]);
 
   // const storedExpenses = JSON.parse(localStorage.getItem("expenses")) || [];
   // // console.log(">>>>>>>>>>>>>", storedExpenses);
@@ -161,6 +171,7 @@ function ExpenseTracker() {
         handleFormInputChange={handleFormInputChange}
         expenseFormValues={expenseFormValues}
       />
+      <ExpensePieChart expensesList={expensesList} />
     </>
   );
 }
