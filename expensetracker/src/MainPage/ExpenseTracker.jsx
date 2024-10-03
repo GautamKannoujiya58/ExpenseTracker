@@ -22,6 +22,7 @@ function ExpenseTracker() {
     addedExpense: "",
     category: "",
     date: "",
+    id: "",
   });
 
   // storing the added list
