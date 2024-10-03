@@ -23,6 +23,7 @@ function ExpenseTracker() {
   const [expense, setExpense] = useState(
     () => Number(localStorage.getItem("totalExpense")) || 0
   );
+
   // Why Lazy initialization:
   //  In your case, you're fetching the initial balance from localStorage,
   //  and the balance might change frequently during the app's lifetime.
@@ -39,12 +40,13 @@ function ExpenseTracker() {
   }, [expense]);
 
   const storedExpenses = JSON.parse(localStorage.getItem("expenses")) || [];
-  // console.log(">>>>>>>>>>>>>", typeof storedExpenses);
+  console.log(">>>>>>>>>>>>>", storedExpenses);
   const newExpense = { title, addedExpense, category, date };
   localStorage.setItem(
     "expenses",
     JSON.stringify([...storedExpenses, newExpense])
   );
+  console.log("Expenses >>>>", newExpense);
 
   const handleBalanceSubmit = (e) => {
     e.preventDefault();
