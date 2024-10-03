@@ -7,17 +7,20 @@ function ModalForm({
   addedBalance,
   setAddedBalance,
   handleExpenseSubmit,
-  title,
-  setTitle,
-  addedExpense,
-  setAddedExpense,
-  category,
-  setCategory,
-  date,
-  setDate,
+  // title,
+  // setTitle,
+  // addedExpense,
+  // setAddedExpense,
+  // category,
+  // setCategory,
+  // date,
+  // setDate,
+  handleFormInputChange,
+  expenseFormValues,
 }) {
-  console.log("ButttonId >>>>", buttonId);
-  console.log("Title >>>>>", title);
+  console.log("expenseFormValues >>>>>!!!", expenseFormValues);
+  // console.log("ButttonId >>>>", buttonId);
+  // console.log("Title >>>>>", title);
   return (
     <>
       {buttonId === "addBalance" ? (
@@ -40,25 +43,27 @@ function ModalForm({
           <h2>Add Expense</h2>
           <form onSubmit={handleExpenseSubmit}>
             <input
+              name="title"
               placeholder="title"
               type="text"
               required
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
+              value={expenseFormValues.title}
+              onChange={handleFormInputChange}
             ></input>
             <input
+              name="addedExpense"
               placeholder="price"
               type="number"
               required
-              value={addedExpense}
-              onChange={(e) => setAddedExpense(e.target.value)}
+              value={expenseFormValues.addedExpense}
+              onChange={handleFormInputChange}
             ></input>
             <select
               name="category"
               id="category"
               required
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
+              value={expenseFormValues.category}
+              onChange={handleFormInputChange}
             >
               <option value="DEFAULT" disabled hidden>
                 Select category
@@ -82,8 +87,8 @@ function ModalForm({
               id="date"
               name="date"
               required
-              value={date}
-              onChange={(e) => setDate(e.target.value)}
+              value={expenseFormValues.date}
+              onChange={handleFormInputChange}
             ></input>
             <button type="submit">Add Expense</button>
             <button onClick={closeModal}>Cancel</button>

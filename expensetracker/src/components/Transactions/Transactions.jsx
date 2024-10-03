@@ -14,14 +14,16 @@ function Transactions({
   addedBalance,
   setAddedBalance,
   handleExpenseSubmit,
-  title,
-  setTitle,
-  addedExpense,
-  setAddedExpense,
-  category,
-  setCategory,
-  date,
-  setDate,
+  // title,
+  // // setTitle,
+  // addedExpense,
+  // setAddedExpense,
+  // category,
+  // setCategory,
+  // date,
+  // setDate,
+  handleFormInputChange,
+  expenseFormValues,
 }) {
   return (
     <>
@@ -47,14 +49,16 @@ function Transactions({
         handleExpenseSubmit={handleExpenseSubmit}
         expense={expense}
         setExpense={setExpense}
-        title={title}
-        setTitle={setTitle}
-        addedExpense={addedExpense}
-        setAddedExpense={setAddedExpense}
-        category={category}
-        setCategory={setCategory}
-        date={date}
-        setDate={setDate}
+        // title={title}
+        // setTitle={setTitle}
+        // addedExpense={addedExpense}
+        // setAddedExpense={setAddedExpense}
+        // category={category}
+        // setCategory={setCategory}
+        // date={date}
+        // setDate={setDate}
+        handleFormInputChange={handleFormInputChange}
+        expenseFormValues={expenseFormValues}
       />
     </>
   );
