@@ -7,7 +7,12 @@ function ExpensePieChart({ expensesList }) {
   //   console.log(">>>", data);
 
   // Colors for the PieChart
-  const COLORS = ["#A000FF", "#FF9304", "#FDE006", "#B2BEB5"];
+  const PICHART_COLORS_MAP = {
+    Food: "#A000FF",
+    Entertainment: "#FF9304",
+    Travel: "#FDE006",
+    Others: "#B2BEB5",
+  };
 
   // Customized label to display inside each Pie slice
   const renderCustomizedLabel = ({
@@ -50,7 +55,10 @@ function ExpensePieChart({ expensesList }) {
           dataKey="value"
         >
           {data.map((entry, index) => (
-            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+            <Cell
+              key={`cell-${index}`}
+              fill={PICHART_COLORS_MAP[entry.category]}
+            />
           ))}
         </Pie>
       </PieChart>

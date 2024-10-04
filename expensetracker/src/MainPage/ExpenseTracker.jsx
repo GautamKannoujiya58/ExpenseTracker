@@ -2,6 +2,7 @@ import Transactions from "../components/Transactions/Transactions";
 import { useSnackbar } from "notistack";
 import { useEffect, useState } from "react";
 import ExpensePieChart from "../components/ExpensePieChart/ExpensePieChart";
+import RecentTransactions from "../components/RecentTransactions/RecentTransactions";
 
 function ExpenseTracker() {
   // const [balance, setBalance] = useState(5000);
@@ -10,6 +11,7 @@ function ExpenseTracker() {
   const [buttonId, setButtonId] = useState("");
 
   const [addedBalance, setAddedBalance] = useState("");
+  const [selectedExpenseId, setSelectedExpenseId] = useState(null);
 
   // const [title, setTitle] = useState("");
   // const [addedExpense, setAddedExpense] = useState("");
@@ -22,20 +24,19 @@ function ExpenseTracker() {
     addedExpense: "",
     category: "",
     date: "",
-    id: "",
   });
 
   // storing the added list
   const [expensesList, setExpensesList] = useState(
     () => JSON.parse(localStorage.getItem("expensesList")) || []
   );
-  // console.log("ExpenseList >>>>", expensesList);
+  console.log("ExpenseList >>>>", expensesList);
 
   const handleFormInputChange = (e) => {
     const { name, value } = e.target;
     setExpenseFormValues({ ...expenseFormValues, [name]: value });
   };
-  console.log("expenseForm >>>", expenseFormValues);
+  // console.log("expenseForm >>>", expenseFormValues);
   // console.log("ExpenseList >>>", expensesList);
   // imported enqueSnackbar for alerts
   const { enqueueSnackbar } = useSnackbar();
@@ -48,10 +49,10 @@ function ExpenseTracker() {
   const [expense, setExpense] = useState(
     () => Number(localStorage.getItem("totalExpense")) || 0
   );
-  console.log("Balance >>>", balance);
-  console.log("Expense >>>", expense);
+  // console.log("Balance >>>", balance);
+  // console.log("Expense >>>", expense);
 
-  console.log("ExpenseListfromLocal >>>", localStorage.getItem("expenseList"));
+  // console.log("ExpenseListfromLocal >>>", localStorage.getItem("expenseList"));
 
   // Why Lazy initialization:
   // In your case, you're fetching the initial balance from localStorage,
@@ -82,6 +83,22 @@ function ExpenseTracker() {
   // );
   // console.log("Expenses >>>>", newExpense);
 
+  // const idCheck = JSON.parse(localStorage.getItem("expensesList"));
+  // idCheck.map((obj) => console.log("idddddddd>>>", obj.id));
+
+  // Handling particular EditExpense click button
+  const handleEditExpense = (list) => {
+    setExpenseFormValues({
+      title: list.title,
+      addedExpense: list.addedExpense,
+      category: list.category,
+      date: list.date,
+    });
+    openModal();
+    // setButtonId("editExpense");
+    setSelectedExpenseId(list.id);
+  };
+
   const handleBalanceSubmit = (e) => {
     e.preventDefault();
     if (addedBalance <= 0) {
@@ -97,6 +114,7 @@ function ExpenseTracker() {
 
   const handleExpenseSubmit = (e) => {
     e.preventDefault();
+
     const { title, addedExpense, category, date } = expenseFormValues;
 
     if (addedExpense <= 0 || addedExpense > balance) {
@@ -111,13 +129,26 @@ function ExpenseTracker() {
       });
       return;
     }
+    if (selectedExpenseId) {
+      const updatedExpenses = expensesList.map((expense) =>
+        expense.id === selectedExpenseId
+          ? { ...expense, title, addedExpense, category, date }
+          : expense
+      );
+      setExpensesList(updatedExpenses);
+      setSelectedExpenseId(null);
+      enqueueSnackbar("Expense updated successfull", { variant: "success" });
+    } else {
+      const uniqueId = Date.now();
+      setExpensesList((prevExpenseList) => [
+        ...prevExpenseList,
+        { id: uniqueId, title, addedExpense, category, date, uniqueId },
+      ]);
+      setBalance((prevBalance) => prevBalance - Number(addedExpense));
+      setExpense((prevExpense) => prevExpense + Number(addedExpense));
+    }
 
-    setExpensesList((prevExpenseList) => [
-      ...prevExpenseList,
-      { title, addedExpense, category, date },
-    ]);
-    setBalance((prevBalance) => prevBalance - Number(addedExpense));
-    setExpense((prevExpense) => prevExpense + Number(addedExpense));
+    // How you can add attribute to that object while calling a function
 
     // console.log("Expense submitted:", { title, addedExpense, category, date });
     // console.log(typeof Number(addedExpense));
@@ -173,6 +204,10 @@ function ExpenseTracker() {
         expenseFormValues={expenseFormValues}
       />
       <ExpensePieChart expensesList={expensesList} />
+      <RecentTransactions
+        expensesList={expensesList}
+        handleEditExpense={handleEditExpense}
+      />
     </>
   );
 }
