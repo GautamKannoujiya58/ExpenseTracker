@@ -19,7 +19,7 @@ function RecentTransactions({ expensesList, handleEditExpense }) {
           <p>{list.title}</p>
           <p>{list.date}</p>
           <p>{list.addedExpense}</p>
-          <button onClick={() => handleEditExpense(list)}>
+          <button id="editExpenses" onClick={() => handleEditExpense(list)}>
             Edit transacion
           </button>
         </div>

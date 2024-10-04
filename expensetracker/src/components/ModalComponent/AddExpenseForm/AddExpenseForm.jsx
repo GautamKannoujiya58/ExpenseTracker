@@ -5,10 +5,11 @@ function AddExpenseForm({
   handleExpenseSubmit,
   expenseFormValues,
   handleFormInputChange,
+  buttonId,
 }) {
   return (
     <>
-      {/* {button} */}
+      {/* {buttonId} */}
       <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
         <h2>Add Expense</h2>
         <form onSubmit={handleExpenseSubmit}>

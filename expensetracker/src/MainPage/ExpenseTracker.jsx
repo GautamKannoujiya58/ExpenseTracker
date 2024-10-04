@@ -11,7 +11,7 @@ function ExpenseTracker() {
   const [buttonId, setButtonId] = useState("");
 
   const [addedBalance, setAddedBalance] = useState("");
-  const [selectedExpenseId, setSelectedExpenseId] = useState(null);
+  // const [selectedExpenseId, setSelectedExpenseId] = useState(null);
 
   // const [title, setTitle] = useState("");
   // const [addedExpense, setAddedExpense] = useState("");
@@ -87,17 +87,17 @@ function ExpenseTracker() {
   // idCheck.map((obj) => console.log("idddddddd>>>", obj.id));
 
   // Handling particular EditExpense click button
-  const handleEditExpense = (list) => {
-    setExpenseFormValues({
-      title: list.title,
-      addedExpense: list.addedExpense,
-      category: list.category,
-      date: list.date,
-    });
-    openModal();
-    // setButtonId("editExpense");
-    setSelectedExpenseId(list.id);
-  };
+  // const handleEditExpense = (list) => {
+  //   setExpenseFormValues({
+  //     title: list.title,
+  //     addedExpense: list.addedExpense,
+  //     category: list.category,
+  //     date: list.date,
+  //   });
+  //   openModal();
+  //   setButtonId("editExpense");
+  //   setSelectedExpenseId(list.id);
+  // };
 
   const handleBalanceSubmit = (e) => {
     e.preventDefault();
@@ -110,6 +110,7 @@ function ExpenseTracker() {
     }
     setBalance((prev) => prev + Number(addedBalance));
     closeModal();
+    setAddedBalance("");
   };
 
   const handleExpenseSubmit = (e) => {
@@ -129,24 +130,14 @@ function ExpenseTracker() {
       });
       return;
     }
-    if (selectedExpenseId) {
-      const updatedExpenses = expensesList.map((expense) =>
-        expense.id === selectedExpenseId
-          ? { ...expense, title, addedExpense, category, date }
-          : expense
-      );
-      setExpensesList(updatedExpenses);
-      setSelectedExpenseId(null);
-      enqueueSnackbar("Expense updated successfull", { variant: "success" });
-    } else {
-      const uniqueId = Date.now();
-      setExpensesList((prevExpenseList) => [
-        ...prevExpenseList,
-        { id: uniqueId, title, addedExpense, category, date, uniqueId },
-      ]);
-      setBalance((prevBalance) => prevBalance - Number(addedExpense));
-      setExpense((prevExpense) => prevExpense + Number(addedExpense));
-    }
+
+    const uniqueId = Date.now();
+    setExpensesList((prevExpenseList) => [
+      ...prevExpenseList,
+      { id: uniqueId, title, addedExpense, category, date, uniqueId },
+    ]);
+    setBalance((prevBalance) => prevBalance - Number(addedExpense));
+    setExpense((prevExpense) => prevExpense + Number(addedExpense));
 
     // How you can add attribute to that object while calling a function
 
@@ -206,7 +197,7 @@ function ExpenseTracker() {
       <ExpensePieChart expensesList={expensesList} />
       <RecentTransactions
         expensesList={expensesList}
-        handleEditExpense={handleEditExpense}
+        // handleEditExpense={handleEditExpense}
       />
     </>
   );
