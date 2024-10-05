@@ -1,4 +1,5 @@
 import ModalForm from "../ModalComponent/ModalForm/ModalForm";
+import PropTypes from "prop-types";
 
 function Transactions({
   balance,
@@ -14,14 +15,6 @@ function Transactions({
   addedBalance,
   setAddedBalance,
   handleExpenseSubmit,
-  // title,
-  // // setTitle,
-  // addedExpense,
-  // setAddedExpense,
-  // category,
-  // setCategory,
-  // date,
-  // setDate,
   handleFormInputChange,
   expenseFormValues,
 }) {
@@ -49,19 +42,29 @@ function Transactions({
         handleExpenseSubmit={handleExpenseSubmit}
         expense={expense}
         setExpense={setExpense}
-        // title={title}
-        // setTitle={setTitle}
-        // addedExpense={addedExpense}
-        // setAddedExpense={setAddedExpense}
-        // category={category}
-        // setCategory={setCategory}
-        // date={date}
-        // setDate={setDate}
         handleFormInputChange={handleFormInputChange}
         expenseFormValues={expenseFormValues}
       />
     </>
   );
 }
+
+Transactions.propTypes = {
+  balance: PropTypes.number.isRequired,
+  setBalance: PropTypes.func.isRequired,
+  modalIsOpen: PropTypes.bool.isRequired,
+  closeModal: PropTypes.func.isRequired,
+  openModal: PropTypes.func.isRequired,
+  handleMainButtonClick: PropTypes.func.isRequired,
+  buttonId: PropTypes.string.isRequired,
+  expense: PropTypes.number.isRequired,
+  setExpense: PropTypes.func.isRequired,
+  handleBalanceSubmit: PropTypes.func.isRequired,
+  addedBalance: PropTypes.string.isRequired,
+  setAddedBalance: PropTypes.func.isRequired,
+  handleExpenseSubmit: PropTypes.func.isRequired,
+  handleFormInputChange: PropTypes.func.isRequired,
+  expenseFormValues: PropTypes.object.isRequired,
+};
 
 export default Transactions;

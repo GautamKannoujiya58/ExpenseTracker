@@ -1,26 +1,21 @@
 import Transactions from "../components/Transactions/Transactions";
 import { useSnackbar } from "notistack";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import ExpensePieChart from "../components/ExpensePieChart/ExpensePieChart";
 import RecentTransactions from "../components/RecentTransactions/RecentTransactions";
 
 function ExpenseTracker() {
-  // const [balance, setBalance] = useState(5000);
-  // const [expense, setExpense] = useState("");
-  const [modalIsOpen, setIsModalOpen] = useState(false);
-  const [buttonId, setButtonId] = useState("");
-  const [isEditing, setIsEditing] = useState(false);
-  const [editingExpenseId, setEditingExpenseId] = useState(null);
+  const [modalIsOpen, setIsModalOpen] = useState(false); // For Modal flag => true/false
+  const [buttonId, setButtonId] = useState(""); // for setting the buttonId on clicking AddBalance,AddExpense,EditExpense,DeleteExpense
+  const [isEditing, setIsEditing] = useState(false); // for editing AddExpense flag
+  const [editingExpenseId, setEditingExpenseId] = useState(null); // getting particular id of the transaction
 
-  const [addedBalance, setAddedBalance] = useState("");
-  // const [selectedExpenseId, setSelectedExpenseId] = useState(null);
+  // imported enqueSnackbar for alerts
+  const { enqueueSnackbar } = useSnackbar();
 
-  // const [title, setTitle] = useState("");
-  // const [addedExpense, setAddedExpense] = useState("");
-  // const [category, setCategory] = useState("DEFAULT");
-  // const [date, setDate] = useState("");
+  const [addedBalance, setAddedBalance] = useState(""); // state for added balance (by user)
 
-  // getting form elements title, price, category and date
+  // getting form elements title, price, category and date (⚠️important)
   const [expenseFormValues, setExpenseFormValues] = useState({
     title: "",
     addedExpense: "",
@@ -28,55 +23,51 @@ function ExpenseTracker() {
     date: "",
   });
 
-  // storing the added list
+  // Accessing the expenseList (added expenses) from localStorage using lazy initialization
   const [expensesList, setExpensesList] = useState(
     () => JSON.parse(localStorage.getItem("expensesList")) || []
   );
-  console.log("ExpenseList >>>>", expensesList);
+  // console.log("ExpenseList >>>>", expensesList);
 
+  // For handling the form value entered in <input> fields
   const handleFormInputChange = (e) => {
     const { name, value } = e.target;
     setExpenseFormValues({ ...expenseFormValues, [name]: value });
   };
-  // console.log("expenseForm >>>", expenseFormValues);
-  // console.log("ExpenseList >>>", expensesList);
-  // imported enqueSnackbar for alerts
-  const { enqueueSnackbar } = useSnackbar();
-  // console.log("AddedBalance >>>", addedBalance);
-  // localStorage.setItem("balance", balance);
 
+  // For setting the main wallet balance
   const [balance, setBalance] = useState(
     () => Number(localStorage.getItem("balance")) || 5000 // lazy initialization: When you pass a function to useState, that function is only called once, during the initial render.
   );
+
+  // For setting the main expense wallet
   const [expense, setExpense] = useState(
     () => Number(localStorage.getItem("totalExpense")) || 0
   );
-  // const listRef = useRef("");
-  // console.log("Balance >>>", balance);
-  // console.log("Expense >>>", expense);
 
-  // console.log("ExpenseListfromLocal >>>", localStorage.getItem("expenseList"));
-
-  // Why Lazy initialization:
+  // ⚠️ Why Lazy initialization:
   // In your case, you're fetching the initial balance from localStorage,
   // and the balance might change frequently during the app's lifetime.
   // You don't want to run the localStorage.getItem("balance")
   // check every time the component renders — only on the first load.
   // That's where lazy initialization helps optimize performance.
 
+  // for setting 'balance' into 'localStorage' as soon as page load
   useEffect(() => {
     localStorage.setItem("balance", balance);
   }, [balance]);
 
+  // for setting 'expense' into 'localStorage' as soon as page load
   useEffect(() => {
     localStorage.setItem("totalExpense", expense);
   }, [expense]);
 
+  // for setting 'expenseList' into 'localStorage' as soon as page load
   useEffect(() => {
     localStorage.setItem("expensesList", JSON.stringify(expensesList));
   }, [expensesList]);
 
-  // Handling particular EditExpense click button
+  // Handling particular EditExpense on button click (Edit transaction)
   const handleEditExpense = (e, list) => {
     console.log("Edit expense clicked!");
     console.log("id >>>", e.target.id);
@@ -93,9 +84,13 @@ function ExpenseTracker() {
 
     openModal();
   };
+
+  // Handling deleting particular transaction on button click (delete trasaction)
   const handleDeleteExpense = (e, listId) => {
+    // finding the transaction id so that only particularly that id should be deleted
     const expenseToDelete = expensesList.find((list) => list.id === listId);
 
+    // removing that id from the expensesList by filter method
     setExpensesList((prevList) =>
       prevList.filter((list) => list.id !== listId)
     );
@@ -107,43 +102,59 @@ function ExpenseTracker() {
       (prevExpense) => prevExpense - Number(expenseToDelete.addedExpense)
     );
     // console.log("listId >>", listId);
-    enqueueSnackbar("Transaction deleted successfully", { variant: "success" });
+
+    enqueueSnackbar("Transaction deleted successfully", {
+      variant: "success",
+      autoHideDuration: 2000,
+    });
   };
 
+  // For handling main balance addition
   const handleBalanceSubmit = (e) => {
     e.preventDefault();
     if (addedBalance <= 0) {
       enqueueSnackbar("Balance or Expense should be greater than 0", {
         variant: "warning",
+        autoHideDuration: 3000,
       });
       closeModal();
+      setAddedBalance("");
       return;
     }
     setBalance((prev) => prev + Number(addedBalance));
     closeModal();
     enqueueSnackbar(`Balance ${balance} added successfully`, {
       variant: "success",
+      autoHideDuration: 2000,
     });
     setAddedBalance("");
   };
 
+  // for handling expense submit form ('Add balance' and 'Done' buttons)
   const handleExpenseSubmit = (e) => {
     e.preventDefault();
 
+    // destructured all the expenses field value from the form by user
     const { title, addedExpense, category, date } = expenseFormValues;
 
     if (addedExpense <= 0 || addedExpense > balance) {
       enqueueSnackbar("Invalid expense amount or insufficient balance", {
         variant: "warning",
+        autoHideDuration: 2000,
       });
       return;
     }
-    if (category === "DEFAULT") {
+
+    // Special condition for preventing 'Add Expense' on submit (as 'required' attribute was not able to prevent the submission)
+    if (!category) {
       enqueueSnackbar("Please select a category", {
         variant: "warning",
+        autoHideDuration: 2000,
       });
       return;
     }
+
+    // for Editing the expense
     if (isEditing) {
       setExpensesList((prevExpenseList) =>
         prevExpenseList.map((list) =>
@@ -155,12 +166,13 @@ function ExpenseTracker() {
       const originalExpense = expensesList.find(
         (list) => list.id === editingExpenseId
       );
+      // Logic for addition OR subtraction after editing particular transaction
       const expenseDifference =
         Number(addedExpense) - Number(originalExpense.addedExpense);
       setBalance((prevBalance) => prevBalance - Number(expenseDifference));
       setExpense((prevExpense) => prevExpense + expenseDifference);
 
-      enqueueSnackbar(`Balance ${balance} added successfully`, {
+      enqueueSnackbar(`Balance ${balance} updated successfully`, {
         variant: "success",
       });
     } else {
@@ -171,13 +183,11 @@ function ExpenseTracker() {
       ]);
       setBalance((prevBalance) => prevBalance - Number(addedExpense));
       setExpense((prevExpense) => prevExpense + Number(addedExpense));
-      enqueueSnackbar("New expense added successfully", { variant: "success" });
+      enqueueSnackbar("New expense added successfully", {
+        variant: "success",
+        autoHideDuration: 2000,
+      });
     }
-
-    // How you can add attribute to that object while calling a function
-
-    // console.log("Expense submitted:", { title, addedExpense, category, date });
-    // console.log(typeof Number(addedExpense));
 
     setExpenseFormValues({
       title: "",
@@ -204,9 +214,6 @@ function ExpenseTracker() {
     setIsModalOpen(true);
   };
 
-  //  useEffect(()=>{
-
-  //  })
   const handleMainButtonClick = (e) => {
     openModal();
     setButtonId(e.target.id);
@@ -236,16 +243,8 @@ function ExpenseTracker() {
         buttonId={buttonId}
         expense={expense}
         setExpense={setExpense}
-        // addedExpense={addedExpense}
-        // setAddedExpense={setAddedExpense}
         handleBalanceSubmit={handleBalanceSubmit}
-        // title={title}
-        // setTitle={setTitle}
         handleExpenseSubmit={handleExpenseSubmit}
-        // category={category}
-        // setCategory={setCategory}
-        // date={date}
-        // setDate={setDate}
         handleFormInputChange={handleFormInputChange}
         expenseFormValues={expenseFormValues}
       />

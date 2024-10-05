@@ -3,22 +3,23 @@ import { MdOutlineMovieFilter } from "react-icons/md";
 import { CiRollingSuitcase } from "react-icons/ci";
 import { GiPayMoney } from "react-icons/gi";
 import TopExpenses from "../TopExpenses/TopExpenses";
-// import EditTransactions from "../EditTransactions/EditTransactions";
+import PropTypes from "prop-types";
+
 function RecentTransactions({
   expensesList,
   handleEditExpense,
   handleDeleteExpense,
 }) {
-  //   const expensesList = JSON.parse(localStorage.getItem("expensesList"));
+  // Assigned a icon with respect to category
   const categoryIcons = {
     Entertainment: <MdOutlineMovieFilter />,
     Food: <PiPizzaThin />,
     Travel: <CiRollingSuitcase />,
   };
 
-  // reversed the expenseList
+  // reversed the expenseList to show the last entered trasaction first in the row
   const reversedExpensesList = [...expensesList].reverse();
-  console.log("reversedExpenseList >>>", reversedExpensesList);
+  // console.log("reversedExpenseList >>>", reversedExpensesList);
 
   return (
     <>
@@ -36,8 +37,15 @@ function RecentTransactions({
           </button>
         </div>
       ))}
-      <TopExpenses />
+      <br></br>
+      <TopExpenses expensesList={expensesList} />
+      <br></br>
     </>
   );
 }
+RecentTransactions.propTypes = {
+  expensesList: PropTypes.array.isRequired,
+  handleEditExpense: PropTypes.func.isRequired,
+  handleDeleteExpense: PropTypes.func.isRequired,
+};
 export default RecentTransactions;

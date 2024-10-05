@@ -1,5 +1,5 @@
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
-
+import PropTypes from "prop-types";
 function ExpensePieChart({ expensesList }) {
   // Grouping expenses by category and summing their values
   const groupedData = expensesList.reduce((acc, curr) => {
@@ -76,5 +76,8 @@ function ExpensePieChart({ expensesList }) {
     </ResponsiveContainer>
   );
 }
+ExpensePieChart.propTypes = {
+  expensesList: PropTypes.array.isRequired,
+};
 
 export default ExpensePieChart;
