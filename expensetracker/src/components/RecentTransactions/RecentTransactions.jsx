@@ -11,9 +11,14 @@ function RecentTransactions({ expensesList, handleEditExpense }) {
     Food: <PiPizzaThin />,
     Travel: <CiRollingSuitcase />,
   };
+
+  // reversed the expenseList
+  const reversedExpensesList = [...expensesList].reverse();
+  console.log("reversedExpenseList >>>", reversedExpensesList);
+
   return (
     <>
-      {expensesList.map((list) => (
+      {reversedExpensesList.map((list) => (
         <div key={list.id} id={list.id}>
           {categoryIcons[list.category] || <GiPayMoney />}
           <p>{list.title}</p>
