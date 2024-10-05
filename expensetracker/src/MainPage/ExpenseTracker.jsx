@@ -93,6 +93,22 @@ function ExpenseTracker() {
 
     openModal();
   };
+  const handleDeleteExpense = (e, listId) => {
+    const expenseToDelete = expensesList.find((list) => list.id === listId);
+
+    setExpensesList((prevList) =>
+      prevList.filter((list) => list.id !== listId)
+    );
+
+    setBalance(
+      (prevBalance) => prevBalance + Number(expenseToDelete.addedExpense)
+    );
+    setExpense(
+      (prevExpense) => prevExpense - Number(expenseToDelete.addedExpense)
+    );
+    // console.log("listId >>", listId);
+    enqueueSnackbar("Transaction deleted successfully", { variant: "success" });
+  };
 
   const handleBalanceSubmit = (e) => {
     e.preventDefault();
@@ -237,6 +253,7 @@ function ExpenseTracker() {
       <RecentTransactions
         expensesList={expensesList}
         handleEditExpense={handleEditExpense}
+        handleDeleteExpense={handleDeleteExpense}
       />
     </>
   );

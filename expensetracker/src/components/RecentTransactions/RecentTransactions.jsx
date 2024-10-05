@@ -4,7 +4,11 @@ import { CiRollingSuitcase } from "react-icons/ci";
 import { GiPayMoney } from "react-icons/gi";
 import TopExpenses from "../TopExpenses/TopExpenses";
 // import EditTransactions from "../EditTransactions/EditTransactions";
-function RecentTransactions({ expensesList, handleEditExpense }) {
+function RecentTransactions({
+  expensesList,
+  handleEditExpense,
+  handleDeleteExpense,
+}) {
   //   const expensesList = JSON.parse(localStorage.getItem("expensesList"));
   const categoryIcons = {
     Entertainment: <MdOutlineMovieFilter />,
@@ -26,6 +30,9 @@ function RecentTransactions({ expensesList, handleEditExpense }) {
           <p>{list.addedExpense}</p>
           <button id="editExpenses" onClick={(e) => handleEditExpense(e, list)}>
             Edit transacion
+          </button>
+          <button onClick={(e) => handleDeleteExpense(e, list.id)}>
+            Delete Transaction
           </button>
         </div>
       ))}
