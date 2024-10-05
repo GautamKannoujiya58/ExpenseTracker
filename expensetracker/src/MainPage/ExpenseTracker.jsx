@@ -172,7 +172,7 @@ function ExpenseTracker() {
       setBalance((prevBalance) => prevBalance - Number(expenseDifference));
       setExpense((prevExpense) => prevExpense + expenseDifference);
 
-      enqueueSnackbar(`Balance ${balance} updated successfully`, {
+      enqueueSnackbar(`Expense updated successfully`, {
         variant: "success",
       });
     } else {
