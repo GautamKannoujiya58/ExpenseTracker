@@ -1,6 +1,6 @@
 import Transactions from "../components/Transactions/Transactions";
 import { useSnackbar } from "notistack";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ExpensePieChart from "../components/ExpensePieChart/ExpensePieChart";
 import RecentTransactions from "../components/RecentTransactions/RecentTransactions";
 
@@ -9,6 +9,8 @@ function ExpenseTracker() {
   // const [expense, setExpense] = useState("");
   const [modalIsOpen, setIsModalOpen] = useState(false);
   const [buttonId, setButtonId] = useState("");
+  const [isEditing, setIsEditing] = useState(false);
+  const [editingExpenseId, setEditingExpenseId] = useState(null);
 
   const [addedBalance, setAddedBalance] = useState("");
   // const [selectedExpenseId, setSelectedExpenseId] = useState(null);
@@ -49,6 +51,7 @@ function ExpenseTracker() {
   const [expense, setExpense] = useState(
     () => Number(localStorage.getItem("totalExpense")) || 0
   );
+  // const listRef = useRef("");
   // console.log("Balance >>>", balance);
   // console.log("Expense >>>", expense);
 
@@ -73,31 +76,23 @@ function ExpenseTracker() {
     localStorage.setItem("expensesList", JSON.stringify(expensesList));
   }, [expensesList]);
 
-  // const storedExpenses = JSON.parse(localStorage.getItem("expenses")) || [];
-  // // console.log(">>>>>>>>>>>>>", storedExpenses);
-  // const newExpense = { title, addedExpense, category, date };
-  // // console.log("NewExpense >>>", newExpense);
-  // localStorage.setItem(
-  //   "expenses",
-  //   JSON.stringify([...storedExpenses, newExpense])
-  // );
-  // console.log("Expenses >>>>", newExpense);
-
-  // const idCheck = JSON.parse(localStorage.getItem("expensesList"));
-  // idCheck.map((obj) => console.log("idddddddd>>>", obj.id));
-
   // Handling particular EditExpense click button
-  // const handleEditExpense = (list) => {
-  //   setExpenseFormValues({
-  //     title: list.title,
-  //     addedExpense: list.addedExpense,
-  //     category: list.category,
-  //     date: list.date,
-  //   });
-  //   openModal();
-  //   setButtonId("editExpense");
-  //   setSelectedExpenseId(list.id);
-  // };
+  const handleEditExpense = (e, list) => {
+    console.log("Edit expense clicked!");
+    console.log("id >>>", e.target.id);
+    setButtonId(e.target.id);
+    console.log("listHellllllll>>>", list);
+    setExpenseFormValues({
+      title: list.title,
+      addedExpense: list.addedExpense,
+      category: list.category,
+      date: list.date,
+    });
+    setIsEditing(true);
+    setEditingExpenseId(list.id);
+
+    openModal();
+  };
 
   const handleBalanceSubmit = (e) => {
     e.preventDefault();
@@ -110,6 +105,9 @@ function ExpenseTracker() {
     }
     setBalance((prev) => prev + Number(addedBalance));
     closeModal();
+    enqueueSnackbar(`Balance ${balance} added successfully`, {
+      variant: "success",
+    });
     setAddedBalance("");
   };
 
@@ -130,14 +128,35 @@ function ExpenseTracker() {
       });
       return;
     }
+    if (isEditing) {
+      setExpensesList((prevExpenseList) =>
+        prevExpenseList.map((list) =>
+          list.id === editingExpenseId
+            ? { ...list, title, addedExpense, category, date }
+            : list
+        )
+      );
+      const originalExpense = expensesList.find(
+        (list) => list.id === editingExpenseId
+      );
+      const expenseDifference =
+        Number(addedExpense) - Number(originalExpense.addedExpense);
+      setBalance((prevBalance) => prevBalance - Number(expenseDifference));
+      setExpense((prevExpense) => prevExpense + expenseDifference);
 
-    const uniqueId = Date.now();
-    setExpensesList((prevExpenseList) => [
-      ...prevExpenseList,
-      { id: uniqueId, title, addedExpense, category, date, uniqueId },
-    ]);
-    setBalance((prevBalance) => prevBalance - Number(addedExpense));
-    setExpense((prevExpense) => prevExpense + Number(addedExpense));
+      enqueueSnackbar(`Balance ${balance} added successfully`, {
+        variant: "success",
+      });
+    } else {
+      const uniqueId = Date.now();
+      setExpensesList((prevExpenseList) => [
+        ...prevExpenseList,
+        { id: uniqueId, title, addedExpense, category, date, uniqueId },
+      ]);
+      setBalance((prevBalance) => prevBalance - Number(addedExpense));
+      setExpense((prevExpense) => prevExpense + Number(addedExpense));
+      enqueueSnackbar("New expense added successfully", { variant: "success" });
+    }
 
     // How you can add attribute to that object while calling a function
 
@@ -155,14 +174,34 @@ function ExpenseTracker() {
 
   const closeModal = () => {
     setIsModalOpen(false);
+    setExpenseFormValues({
+      title: "",
+      addedExpense: "",
+      category: "",
+      date: "",
+    });
+    setIsEditing(false);
+    setEditingExpenseId(null);
+    setButtonId("");
   };
   const openModal = () => {
     setIsModalOpen(true);
   };
 
+  //  useEffect(()=>{
+
+  //  })
   const handleMainButtonClick = (e) => {
     openModal();
     setButtonId(e.target.id);
+    setIsEditing(false);
+    setEditingExpenseId(null);
+    setExpenseFormValues({
+      title: "",
+      addedExpense: "",
+      category: "",
+      date: "",
+    });
   };
 
   return (
@@ -197,7 +236,7 @@ function ExpenseTracker() {
       <ExpensePieChart expensesList={expensesList} />
       <RecentTransactions
         expensesList={expensesList}
-        // handleEditExpense={handleEditExpense}
+        handleEditExpense={handleEditExpense}
       />
     </>
   );
