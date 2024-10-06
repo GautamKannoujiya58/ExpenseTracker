@@ -1,4 +1,5 @@
 import ModalForm from "../ModalComponent/ModalForm/ModalForm";
+import styles from "./Transactions.module.css";
 import PropTypes from "prop-types";
 
 function Transactions({
@@ -20,15 +21,27 @@ function Transactions({
 }) {
   return (
     <>
-      <p>Wallet Balance: ₹{balance}</p>
-      <button id="addBalance" onClick={handleMainButtonClick}>
-        Add balance
-      </button>
+      <div className={styles.transactionsDiv}>
+        <div className={styles.walletDiv}>
+          <div className={styles.walletBalanceDiv}>
+            <h3>Wallet Balance:</h3>
+            <h3>₹{balance}</h3>
+          </div>
+          <button id="addBalance" onClick={handleMainButtonClick}>
+            Add balance
+          </button>
+        </div>
 
-      <p>Expenses:₹{expense}</p>
-      <button id="addExpense" onClick={handleMainButtonClick}>
-        Add Expenses
-      </button>
+        <div className={styles.expenseDiv}>
+          <div className={styles.expenseBalanceDiv}>
+            <h3>Expenses:</h3>
+            <h3>₹{expense}</h3>
+          </div>
+          <button id="addExpense" onClick={handleMainButtonClick}>
+            Add Expenses
+          </button>
+        </div>
+      </div>
 
       <ModalForm
         modalIsOpen={modalIsOpen}

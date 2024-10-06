@@ -1,0 +1,66 @@
+.transactionsDiv {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+  width: 38vw;
+  height: 18vh;
+  margin-left: 4vw;
+  gap: 3vw;
+}
+
+.walletDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: nowrap;
+  width: 18vw;
+  height: 18vh;
+  border-radius: 15px;
+  background-color: #9b9b9b;
+}
+.walletBalanceDiv {
+  display: flex;
+  align-items: center;
+}
+.walletBalanceDiv h3 {
+  padding: 4px;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  color: #ffffff;
+}
+.expenseDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 18vw;
+  height: 18vh;
+  border-radius: 15px;
+  background-color: #9b9b9b;
+}
+.expenseBalanceDiv {
+  display: flex;
+  align-items: center;
+}
+.expenseBalanceDiv h3 {
+  padding: 4px;
+}
+
+@media only screen and (max-width: 900px) {
+  .transactionsDiv {
+    flex-direction: column;
+    justify-content: space-around;
+    margin: auto;
+    align-items: center;
+    height: auto;
+    margin-top: 20px;
+  }
+  .walletDiv {
+    margin-bottom: 30px;
+    width: 80vw;
+  }
+  .expenseDiv {
+    width: 80vw;
+  }
+}

@@ -3,6 +3,7 @@ import { useSnackbar } from "notistack";
 import { useEffect, useState } from "react";
 import ExpensePieChart from "../components/ExpensePieChart/ExpensePieChart";
 import RecentTransactions from "../components/RecentTransactions/RecentTransactions";
+import styles from "./ExpenseTracker.module.css";
 
 function ExpenseTracker() {
   const [modalIsOpen, setIsModalOpen] = useState(false); // For Modal flag => true/false
@@ -229,26 +230,28 @@ function ExpenseTracker() {
 
   return (
     <>
-      <h1>Expense Tracker</h1>
-      <Transactions
-        balance={balance}
-        setBalance={setBalance}
-        setIsModalOpen={setIsModalOpen}
-        modalIsOpen={modalIsOpen}
-        closeModal={closeModal}
-        openModal={openModal}
-        handleMainButtonClick={handleMainButtonClick}
-        addedBalance={addedBalance}
-        setAddedBalance={setAddedBalance}
-        buttonId={buttonId}
-        expense={expense}
-        setExpense={setExpense}
-        handleBalanceSubmit={handleBalanceSubmit}
-        handleExpenseSubmit={handleExpenseSubmit}
-        handleFormInputChange={handleFormInputChange}
-        expenseFormValues={expenseFormValues}
-      />
-      <ExpensePieChart expensesList={expensesList} />
+      <h1 className={styles.heading}>Expense Tracker</h1>
+      <div className={styles.transactionsMainDiv}>
+        <Transactions
+          balance={balance}
+          setBalance={setBalance}
+          setIsModalOpen={setIsModalOpen}
+          modalIsOpen={modalIsOpen}
+          closeModal={closeModal}
+          openModal={openModal}
+          handleMainButtonClick={handleMainButtonClick}
+          addedBalance={addedBalance}
+          setAddedBalance={setAddedBalance}
+          buttonId={buttonId}
+          expense={expense}
+          setExpense={setExpense}
+          handleBalanceSubmit={handleBalanceSubmit}
+          handleExpenseSubmit={handleExpenseSubmit}
+          handleFormInputChange={handleFormInputChange}
+          expenseFormValues={expenseFormValues}
+        />
+        <ExpensePieChart expensesList={expensesList} />
+      </div>
       <RecentTransactions
         expensesList={expensesList}
         handleEditExpense={handleEditExpense}
