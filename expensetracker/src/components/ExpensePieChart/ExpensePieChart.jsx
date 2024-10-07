@@ -56,8 +56,11 @@ function ExpensePieChart({ expensesList }) {
 
   return (
     <>
-      <div></div>
-      <ResponsiveContainer width="100%" height={400}>
+      <ResponsiveContainer
+        width="100%"
+        height={400}
+        className={styles.ResponsiveContainer}
+      >
         <PieChart className={styles.pieChart}>
           <Pie
             data={data}

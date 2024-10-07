@@ -253,11 +253,11 @@ function ExpenseTracker() {
         <ExpensePieChart expensesList={expensesList} />
       </div>
 
-      <RecentTransactions
+      {/* <RecentTransactions
         expensesList={expensesList}
         handleEditExpense={handleEditExpense}
         handleDeleteExpense={handleDeleteExpense}
-      />
+      /> */}
     </>
   );
 }
