@@ -1,5 +1,7 @@
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
+import styles from "./ExpensePieChart.module.css";
 import PropTypes from "prop-types";
+
 function ExpensePieChart({ expensesList }) {
   // Grouping expenses by category and summing their values
   const groupedData = expensesList.reduce((acc, curr) => {
@@ -13,7 +15,7 @@ function ExpensePieChart({ expensesList }) {
 
   // Transforming grouped data into an array for the PieChart
   const data = Object.keys(groupedData).map((category) => ({
-    category,
+    name: category, // Renamed "category" to "name" for the legend
     value: groupedData[category],
   }));
 
@@ -53,29 +55,44 @@ function ExpensePieChart({ expensesList }) {
   };
 
   return (
-    <ResponsiveContainer width="100%" height={300}>
-      <PieChart>
-        <Pie
-          data={data}
-          cx="50%"
-          cy="50%"
-          labelLine={false}
-          label={renderCustomizedLabel}
-          outerRadius={100}
-          fill="#8884d8"
-          dataKey="value"
-        >
-          {data.map((entry, index) => (
-            <Cell
-              key={`cell-${index}`}
-              fill={PICHART_COLORS_MAP[entry.category] || "#8884d8"}
-            />
-          ))}
-        </Pie>
-      </PieChart>
-    </ResponsiveContainer>
+    <>
+      <div></div>
+      <ResponsiveContainer width="100%" height={400}>
+        <PieChart className={styles.pieChart}>
+          <Pie
+            data={data}
+            cx="50%"
+            cy="50%"
+            labelLine={false}
+            label={renderCustomizedLabel}
+            outerRadius={80}
+            fill="#8884d8"
+            dataKey="value"
+            nameKey="name" // Important: Use the "nameKey" prop to show the correct labels
+          >
+            {data.map((entry, index) => (
+              <Cell
+                key={`cell-${index}`}
+                fill={PICHART_COLORS_MAP[entry.name] || "#8884d8"} // Match the color to the name
+              />
+            ))}
+          </Pie>
+        </PieChart>
+        <div className={styles.labelsDiv}>
+          <button></button>
+          <p>Food</p>
+          <button></button>
+          <p>Entertainment</p>
+          <button></button>
+          <p>Travel</p>
+          <button></button>
+          <p>Others</p>
+        </div>
+      </ResponsiveContainer>
+    </>
   );
 }
+
 ExpensePieChart.propTypes = {
   expensesList: PropTypes.array.isRequired,
 };

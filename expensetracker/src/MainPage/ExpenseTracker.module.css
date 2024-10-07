@@ -13,8 +13,9 @@
   margin: auto;
   justify-content: space-between;
   align-items: center;
-  width: 62vw;
+  width: 63vw;
   border-radius: 10px;
+  height: 32vh;
 
   background-color: #626262;
 }

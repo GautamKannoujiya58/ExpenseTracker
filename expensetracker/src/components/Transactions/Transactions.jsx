@@ -24,21 +24,21 @@ function Transactions({
       <div className={styles.transactionsDiv}>
         <div className={styles.walletDiv}>
           <div className={styles.walletBalanceDiv}>
-            <h3>Wallet Balance:</h3>
-            <h3>₹{balance}</h3>
+            <h2>Wallet Balance:</h2>
+            <h2>₹{balance}</h2>
           </div>
           <button id="addBalance" onClick={handleMainButtonClick}>
-            Add balance
+            + Add balance
           </button>
         </div>
 
         <div className={styles.expenseDiv}>
           <div className={styles.expenseBalanceDiv}>
-            <h3>Expenses:</h3>
-            <h3>₹{expense}</h3>
+            <h2>Expenses:</h2>
+            <h2>₹{expense}</h2>
           </div>
           <button id="addExpense" onClick={handleMainButtonClick}>
-            Add Expenses
+            + Add Expense
           </button>
         </div>
       </div>
