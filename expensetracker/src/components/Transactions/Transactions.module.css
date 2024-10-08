@@ -13,16 +13,20 @@
 .walletDiv {
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
   align-items: center;
-  /* flex-wrap: nowrap; */
   width: 18vw;
-  /* height: 18vh; */
+  height: 20vh;
   border-radius: 15px;
   background-color: #9b9b9b;
+  box-shadow: 0 4px 10px #00000040; /* Shadow just beneath the button */
+  transition: box-shadow 0.3s ease; /* Smooth shadow transition */
 }
 .walletBalanceDiv {
   display: flex;
+  justify-content: space-evenly;
   align-items: center;
+  flex-wrap: nowrap;
 }
 .walletBalanceDiv h2 {
   padding: 4px;
@@ -38,7 +42,7 @@
 }
 .walletDiv button {
   width: 167.65px;
-  height: 38px;
+  min-height: 38px;
   border-radius: 15px;
   border-style: none;
   font-family: "Ubuntu", sans-serif;
@@ -52,14 +56,18 @@
 .expenseDiv {
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
   align-items: center;
   width: 18vw;
-  /* height: 18vh; */
+  height: 20vh;
   border-radius: 15px;
   background-color: #9b9b9b;
+  box-shadow: 0 4px 10px #00000040; /* Shadow just beneath the button */
+  transition: box-shadow 0.3s ease; /* Smooth shadow transition */
 }
 .expenseBalanceDiv {
   display: flex;
+  justify-content: space-evenly;
   align-items: center;
 }
 .expenseBalanceDiv h2 {
@@ -76,7 +84,7 @@
 }
 .expenseDiv button {
   width: 167.65px;
-  height: 38px;
+  min-height: 38px;
   border-radius: 15px;
   border-style: none;
   font-family: "Ubuntu", sans-serif;
@@ -101,7 +109,16 @@
     margin-bottom: 30px;
     width: 80vw;
   }
+  .walletDiv button {
+    margin-top: -22px;
+  }
   .expenseDiv {
     width: 80vw;
+  }
+}
+
+@media only screen and (max-width: 1300px) {
+  .walletDiv button {
+    margin-top: -22px;
   }
 }

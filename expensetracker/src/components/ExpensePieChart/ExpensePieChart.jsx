@@ -81,7 +81,7 @@ function ExpensePieChart({ expensesList }) {
             ))}
           </Pie>
         </PieChart>
-        <div className={styles.labelsDiv}>
+        {/* <div className={styles.labelsDiv}>
           <button></button>
           <p>Food</p>
           <button></button>
@@ -90,7 +90,7 @@ function ExpensePieChart({ expensesList }) {
           <p>Travel</p>
           <button></button>
           <p>Others</p>
-        </div>
+        </div> */}
       </ResponsiveContainer>
     </>
   );

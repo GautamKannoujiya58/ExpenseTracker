@@ -1,11 +1,13 @@
-import { PiPizzaThin } from "react-icons/pi";
-import { MdOutlineMovieFilter } from "react-icons/md";
+import { PiPizzaBold } from "react-icons/pi";
+import { GrFormNextLink, GrFormPreviousLink } from "react-icons/gr";
+import { MdOutlineMovieFilter, MdOutlineDelete, MdEdit } from "react-icons/md";
 import { CiRollingSuitcase } from "react-icons/ci";
 import { GiPayMoney } from "react-icons/gi";
 import TopExpenses from "../TopExpenses/TopExpenses";
 import PropTypes from "prop-types";
-// import Pagination from "../Pagination/Pagination";
+import styles from "./RecentTransactions.module.css";
 import { useState } from "react";
+import { IconContext } from "react-icons/lib";
 
 function RecentTransactions({
   expensesList,
@@ -15,7 +17,7 @@ function RecentTransactions({
   // Assigned a icon with respect to category
   const categoryIcons = {
     Entertainment: <MdOutlineMovieFilter />,
-    Food: <PiPizzaThin />,
+    Food: <PiPizzaBold />,
     Travel: <CiRollingSuitcase />,
   };
 
@@ -51,28 +53,84 @@ function RecentTransactions({
     }
   };
   // console.log("reversedExpenseList >>>", reversedExpensesList);
+  // Utility function to format the date
+  const formatDate = (dateStr) => {
+    const dateObj = new Date(dateStr); // Convert string to Date object
+    return dateObj.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+  };
 
   return (
     <>
-      {currentExpenseToDisplay.map((list) => (
-        <div key={list.id} id={list.id}>
-          {categoryIcons[list.category] || <GiPayMoney />}
-          <p>{list.title}</p>
-          <p>{list.date}</p>
-          <p>{list.addedExpense}</p>
-          <button id="editExpenses" onClick={(e) => handleEditExpense(e, list)}>
-            Edit transacion
-          </button>
-          <button onClick={(e) => handleDeleteExpense(e, list.id)}>
-            Delete Transaction
-          </button>
+      {/* <div className={styles.headings}>
+        
+        <h1>Top Expenses</h1>
+      </div> */}
+      <h1>Recent Transactions & Top Expenses</h1>
+      <div className={styles.recentMainDiv}>
+        <div className={styles.recentTransactionsDiv}>
+          {currentExpenseToDisplay.map((list) => (
+            <div className={styles.singleListDiv} key={list.id} id={list.id}>
+              <div className={styles.iconTitleDiv}>
+                <IconContext.Provider
+                  value={{ color: "#33363F", size: "24px" }}
+                >
+                  <div className={styles.icon}>
+                    {categoryIcons[list.category] || <GiPayMoney />}
+                  </div>
+                </IconContext.Provider>
+
+                <div className={styles.titleDate}>
+                  <p>{list.title}</p>
+                  <p>{formatDate(list.date)}</p>
+                </div>
+              </div>
+
+              <div className={styles.editDeleteDiv}>
+                <p>₹{list.addedExpense}</p>
+                <div className={styles.editDeleteButtons}>
+                  <button onClick={(e) => handleDeleteExpense(e, list.id)}>
+                    <IconContext.Provider
+                      value={{ color: "#FFFFFF", size: "37px" }}
+                    >
+                      <MdOutlineDelete />
+                    </IconContext.Provider>
+                  </button>
+
+                  <button
+                    id="editExpenses"
+                    onClick={(e) => handleEditExpense(e, list)}
+                  >
+                    <IconContext.Provider
+                      value={{ color: "#FFFFFF", size: "37px" }}
+                    >
+                      <MdEdit />
+                    </IconContext.Provider>
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+
+          <div className={styles.nextPrevDiv}>
+            <button onClick={handlePrev}>
+              <IconContext.Provider value={{ size: "24px", color: "#222222" }}>
+                <GrFormPreviousLink />
+              </IconContext.Provider>
+            </button>
+            <button className={styles.currentPageDiv}>{currentPage}</button>
+            <button onClick={handleNext}>
+              <IconContext.Provider value={{ size: "24px", color: "#222222" }}>
+                <GrFormNextLink />
+              </IconContext.Provider>
+            </button>
+          </div>
         </div>
-      ))}
-      <button onClick={handlePrev}>⬅️Prev</button>
-      <button onClick={handleNext}>➡️Next</button>
-      <br></br>
-      <TopExpenses expensesList={expensesList} />
-      <br></br>
+        <TopExpenses expensesList={expensesList} />
+      </div>
     </>
   );
 }

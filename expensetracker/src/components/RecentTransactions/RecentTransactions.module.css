@@ -1,0 +1,166 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap");
+h1 {
+  display: flex;
+  margin-top: 4vh;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+  color: #ffffff;
+}
+.headings h1:nth-of-type(1) {
+  margin-left: -80px;
+}
+.recentMainDiv {
+  display: flex;
+  margin: auto;
+  /* margin-top: 8vh; */
+  justify-content: space-between;
+  width: 70vw;
+  gap: 8vw;
+}
+
+.recentTransactionsDiv {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 38vw;
+  height: 44vh;
+  border-radius: 15px;
+  background-color: #ffffff;
+}
+
+.singleListDiv {
+  margin-top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.iconTitleDiv {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 8px;
+}
+.icon {
+  background-color: #d9d9d9; /* Change this to your desired color */
+  padding: 10px; /* Adjust the padding for icon size and spacing */
+  border-radius: 50%; /* Makes it circular, you can adjust/remove based on your design */
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+.titleDate {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  margin: auto;
+}
+.titleDate p:nth-of-type(1) {
+  margin-bottom: -9px;
+  width: 59px;
+  height: 22px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 21.79px;
+  color: #000000;
+}
+.titleDate p:nth-of-type(2) {
+  width: auto;
+  color: gray;
+}
+
+.editDeleteDiv {
+  display: flex;
+  align-items: center;
+}
+.editDeleteDiv p {
+  width: 37px;
+  height: 22px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 21.79px;
+  color: #f4bb4a;
+  padding: 24px;
+}
+.editDeleteDiv button {
+  border-style: none;
+  /* background-color: #f4bb4a; */
+  /* padding: 24px; */
+}
+.editDeleteDiv button:nth-of-type(1) {
+  background-color: #ff3e3e;
+  border-radius: 50px;
+  padding: 4px;
+  margin: 4px;
+  box-shadow: 0 4px 10px #484747cc; /* Shadow just beneath the button */
+  transition: box-shadow 0.3s ease; /* Smooth shadow transition */
+  cursor: pointer;
+}
+.editDeleteDiv button:nth-of-type(2) {
+  background-color: #f4bb4a;
+  border-radius: 50px;
+  padding: 4px;
+  margin: 4px;
+  box-shadow: 0 4px 10px #484747cc; /* Shadow just beneath the button */
+  transition: box-shadow 0.3s ease; /* Smooth shadow transition */
+  cursor: pointer;
+}
+.editDeleteButtons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 16px;
+}
+.nextPrevDiv {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -50%); /*Shift back by half of width and height*/
+  display: flex;
+  margin: auto;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: -32px;
+}
+.nextPrevDiv button {
+  width: 37px;
+  height: 37px;
+  background-color: #f1f1f1;
+  border-style: none;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px #6f6c6ccc; /* Shadow just beneath the button */
+  transition: box-shadow 0.3s ease; /* Smooth shadow transition */
+  margin: 6px;
+}
+.nextPrevDiv .currentPageDiv {
+  border-radius: 5px;
+  background-color: #43967b;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 27.58px;
+  color: #ffffff;
+}
+
+@media only screen and (max-width: 900px) {
+  .recentMainDiv {
+    flex-direction: column;
+    margin-top: 10vh;
+  }
+  .recentTransactionsDiv {
+    /* margin-left: -32px; */
+    /* width: 100vw; */
+    height: auto;
+    /* background-color: red; */
+  }
+  .singleListDiv {
+    /* flex-direction: column; */
+  }
+}
+/* 
+margin-top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; */

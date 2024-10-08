@@ -1,0 +1,21 @@
+.topExpensesMainDiv {
+  width: 22vw;
+  height: 40vh;
+  border-radius: 15px;
+  background-color: #ffffff;
+}
+.topExpensesMainDiv h1 {
+  width: 261px;
+  height: 32px;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+  font-size: 28px;
+  line-height: 32.17px;
+}
+@media only screen and (max-width: 900px) {
+  .topExpensesMainDiv {
+    width: 100vw;
+    /* margin-left: -32px; */
+  }
+}

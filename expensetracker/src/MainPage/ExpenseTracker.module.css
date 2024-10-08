@@ -13,18 +13,61 @@
   margin: auto;
   justify-content: space-between;
   align-items: center;
-  width: 63vw;
+  flex-wrap: nowrap;
+  width: 70vw;
   border-radius: 10px;
   height: 32vh;
 
   background-color: #626262;
 }
 
+.labelsDiv button {
+  border-style: none;
+  color: #ffffff;
+  border-radius: 2px;
+  margin: 2px;
+  cursor: none;
+}
+
 @media only screen and (max-width: 900px) {
+  .mainWrapper {
+    width: 100%;
+  }
   .transactionsMainDiv {
     flex-direction: column;
     align-items: center;
     width: 100%;
     height: auto;
   }
+  .labelsDiv {
+    width: 80vw;
+    margin-top: -16vh;
+    margin-bottom: 4vh;
+  }
 }
+@media only screen and (max-width: 1300px) {
+  .transactionsMainDiv {
+    width: auto;
+    justify-content: space-around;
+  }
+}
+
+/* Second section styling below here */
+
+/* .secondSectionsHeading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8vh;
+  /* padding: 20px; */
+/* } */
+
+/* .secondSectionsHeading h1 {
+  width: 261px;
+  height: 32px;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+  font-size: 28px;
+  line-height: 32.17px;
+  color: #ffffff; */

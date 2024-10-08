@@ -1,5 +1,6 @@
 import { BarChart, Bar, XAxis, YAxis } from "recharts";
 import PropTypes from "prop-types";
+import styles from "./TopExpenses.module.css";
 
 function TopExpenses({ expensesList }) {
   console.log("expensesList from top>>", expensesList);
@@ -36,25 +37,31 @@ function TopExpenses({ expensesList }) {
   ];
   return (
     <>
-      <h1>Top Expenses</h1>
-      <BarChart
-        width={600} // Width of the chart
-        height={400} // Height of the chart
-        data={data} // Data array containing the values for bars
-        layout="vertical" // This makes the bars horizontal
-        margin={{ top: 20, right: 30, left: 40, bottom: 20 }} // Margin around the chart
-      >
-        <YAxis
-          type="category"
-          dataKey="category"
-          width={100}
-          axisLine={false} // Removes the Y axis line
-          tickLine={false}
-        />
-        <XAxis type="number" hide={true} />
-        {/* <Tooltip /> */}
-        <Bar dataKey="totalExpense" fill="#8884d8" barSize={20} />
-      </BarChart>
+      <div className={styles.topExpensesMainDiv}>
+        <BarChart
+          width={400} // Width of the chart
+          height={350} // Height of the chart
+          data={data} // Data array containing the values for bars
+          layout="vertical" // This makes the bars horizontal
+          margin={{ top: 5, right: 30, left: 30, bottom: 20, borderRadius: 4 }} // Margin around the chart
+        >
+          <YAxis
+            type="category"
+            dataKey="category"
+            width={100}
+            axisLine={false} // Removes the Y axis line
+            tickLine={false}
+          />
+          <XAxis type="number" hide={true} />
+          {/* <Tooltip /> */}
+          <Bar
+            dataKey="totalExpense"
+            fill="#8884d8"
+            barSize={20}
+            radius={[0, 10, 10, 0]}
+          />
+        </BarChart>
+      </div>
     </>
   );
 }
