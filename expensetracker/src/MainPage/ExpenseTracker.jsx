@@ -262,11 +262,13 @@ function ExpenseTracker() {
         </div>
       </div>
 
-      <RecentTransactions
-        expensesList={expensesList}
-        handleEditExpense={handleEditExpense}
-        handleDeleteExpense={handleDeleteExpense}
-      />
+      {expense > 0 && (
+        <RecentTransactions
+          expensesList={expensesList}
+          handleEditExpense={handleEditExpense}
+          handleDeleteExpense={handleDeleteExpense}
+        />
+      )}
     </>
   );
 }
