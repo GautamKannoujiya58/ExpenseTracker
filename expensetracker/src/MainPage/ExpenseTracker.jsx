@@ -230,44 +230,40 @@ function ExpenseTracker() {
 
   return (
     <>
-      <div className={styles.mainWrapper}>
-        <h1 className={styles.heading}>Expense Tracker</h1>
-        <div className={styles.transactionsMainDiv}>
-          <Transactions
-            balance={balance}
-            setBalance={setBalance}
-            setIsModalOpen={setIsModalOpen}
-            modalIsOpen={modalIsOpen}
-            closeModal={closeModal}
-            openModal={openModal}
-            handleMainButtonClick={handleMainButtonClick}
-            addedBalance={addedBalance}
-            setAddedBalance={setAddedBalance}
-            buttonId={buttonId}
-            expense={expense}
-            setExpense={setExpense}
-            handleBalanceSubmit={handleBalanceSubmit}
-            handleExpenseSubmit={handleExpenseSubmit}
-            handleFormInputChange={handleFormInputChange}
-            expenseFormValues={expenseFormValues}
-          />
-          <ExpensePieChart expensesList={expensesList} />
-          <div className={styles.labelsDiv}>
-            <button style={{ backgroundColor: "#A000FF" }}>Food</button>
-            <button style={{ backgroundColor: "#FF9304" }}>
-              Entertainment
-            </button>
-            <button style={{ backgroundColor: "#FDE006" }}>Travel</button>
-            <button style={{ backgroundColor: "#B2BEB5" }}>Others</button>
-          </div>
-        </div>
-
-        <RecentTransactions
-          expensesList={expensesList}
-          handleEditExpense={handleEditExpense}
-          handleDeleteExpense={handleDeleteExpense}
+      <h1 className={styles.heading}>Expense Tracker</h1>
+      <div className={styles.transactionsMainDiv}>
+        <Transactions
+          balance={balance}
+          setBalance={setBalance}
+          setIsModalOpen={setIsModalOpen}
+          modalIsOpen={modalIsOpen}
+          closeModal={closeModal}
+          openModal={openModal}
+          handleMainButtonClick={handleMainButtonClick}
+          addedBalance={addedBalance}
+          setAddedBalance={setAddedBalance}
+          buttonId={buttonId}
+          expense={expense}
+          setExpense={setExpense}
+          handleBalanceSubmit={handleBalanceSubmit}
+          handleExpenseSubmit={handleExpenseSubmit}
+          handleFormInputChange={handleFormInputChange}
+          expenseFormValues={expenseFormValues}
         />
+        <ExpensePieChart expensesList={expensesList} />
+        <div className={styles.labelsDiv}>
+          <button style={{ backgroundColor: "#A000FF" }}>Food</button>
+          <button style={{ backgroundColor: "#FF9304" }}>Entertainment</button>
+          <button style={{ backgroundColor: "#FDE006" }}>Travel</button>
+          <button style={{ backgroundColor: "#B2BEB5" }}>Others</button>
+        </div>
       </div>
+
+      <RecentTransactions
+        expensesList={expensesList}
+        handleEditExpense={handleEditExpense}
+        handleDeleteExpense={handleDeleteExpense}
+      />
     </>
   );
 }

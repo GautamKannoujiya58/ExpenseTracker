@@ -1,6 +1,6 @@
 .topExpensesMainDiv {
-  width: 22vw;
-  height: 40vh;
+  width: auto;
+  height: auto;
   border-radius: 15px;
   background-color: #ffffff;
 }
@@ -16,6 +16,9 @@
 @media only screen and (max-width: 900px) {
   .topExpensesMainDiv {
     width: 100vw;
+    height: auto;
+    box-sizing: border-box;
+    /* flex-wrap: nowrap; */
     /* margin-left: -32px; */
   }
 }

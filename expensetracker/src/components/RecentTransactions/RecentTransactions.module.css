@@ -13,7 +13,7 @@ h1 {
 .recentMainDiv {
   display: flex;
   margin: auto;
-  /* margin-top: 8vh; */
+  margin-top: 16vh;
   justify-content: space-between;
   width: 70vw;
   gap: 8vw;
@@ -24,7 +24,7 @@ h1 {
   display: flex;
   flex-direction: column;
   width: 38vw;
-  height: 44vh;
+  height: auto;
   border-radius: 15px;
   background-color: #ffffff;
 }
@@ -75,8 +75,8 @@ h1 {
   align-items: center;
 }
 .editDeleteDiv p {
-  width: 37px;
-  height: 22px;
+  width: auto;
+  height: auto;
   font-family: "Open Sans", sans-serif;
   font-weight: 700;
   font-size: 16px;
@@ -143,24 +143,61 @@ h1 {
   line-height: 27.58px;
   color: #ffffff;
 }
-
 @media only screen and (max-width: 900px) {
   .recentMainDiv {
     flex-direction: column;
-    margin-top: 10vh;
+    margin: auto;
+    margin-top: 18vh;
+    height: auto;
+    align-items: center;
+    justify-content: space-around;
+    gap: 12vh;
   }
   .recentTransactionsDiv {
-    /* margin-left: -32px; */
-    /* width: 100vw; */
+    position: relative;
+    width: 100vw;
+    box-sizing: border-box; /* Include padding/border in width */
+    display: flex; /* Use flexbox to control row layout */
+    flex-wrap: nowrap;
     height: auto;
-    /* background-color: red; */
   }
-  .singleListDiv {
-    /* flex-direction: column; */
+  /* .editDeleteDiv {
+    width: 100vw;
+  } */
+
+  .editDeleteDiv button:nth-of-type(1) {
+    padding: 1vw;
+    margin: 1vw;
+    box-shadow: 0 4px 10px #484747cc; /* Shadow just beneath the button */
+    transition: box-shadow 0.3s ease; /* Smooth shadow transition */
+    cursor: pointer;
   }
+  .editDeleteDiv button:nth-of-type(2) {
+    padding: 1vw;
+    margin: 1vw;
+    box-shadow: 0 4px 10px #484747cc; /* Shadow just beneath the button */
+    transition: box-shadow 0.3s ease; /* Smooth shadow transition */
+    cursor: pointer;
+  }
+  .editDeleteButtons {
+    padding: 1vw;
+  }
+  .nextPrevDiv {
+    margin-top: -4vh;
+  }
+  /* .nextPrevDiv button {
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    margin: 4px;
+  }
+  .nextPrevDiv .currentPageDiv {
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 10px;
+  }
+  .nextIcon {
+    size: 30px;
+  } */
 }
-/* 
-margin-top: 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center; */

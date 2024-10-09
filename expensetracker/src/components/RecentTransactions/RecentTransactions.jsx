@@ -65,11 +65,6 @@ function RecentTransactions({
 
   return (
     <>
-      {/* <div className={styles.headings}>
-        
-        <h1>Top Expenses</h1>
-      </div> */}
-      <h1>Recent Transactions & Top Expenses</h1>
       <div className={styles.recentMainDiv}>
         <div className={styles.recentTransactionsDiv}>
           {currentExpenseToDisplay.map((list) => (
@@ -123,9 +118,13 @@ function RecentTransactions({
             </button>
             <button className={styles.currentPageDiv}>{currentPage}</button>
             <button onClick={handleNext}>
-              <IconContext.Provider value={{ size: "24px", color: "#222222" }}>
-                <GrFormNextLink />
-              </IconContext.Provider>
+              <div className={styles.nextIcon}>
+                <IconContext.Provider
+                  value={{ size: "24px", color: "#222222" }}
+                >
+                  <GrFormNextLink />
+                </IconContext.Provider>
+              </div>
             </button>
           </div>
         </div>
