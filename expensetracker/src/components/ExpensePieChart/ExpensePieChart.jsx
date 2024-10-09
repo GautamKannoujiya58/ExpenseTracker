@@ -81,16 +81,6 @@ function ExpensePieChart({ expensesList }) {
             ))}
           </Pie>
         </PieChart>
-        {/* <div className={styles.labelsDiv}>
-          <button></button>
-          <p>Food</p>
-          <button></button>
-          <p>Entertainment</p>
-          <button></button>
-          <p>Travel</p>
-          <button></button>
-          <p>Others</p>
-        </div> */}
       </ResponsiveContainer>
     </>
   );

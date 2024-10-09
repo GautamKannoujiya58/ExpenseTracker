@@ -216,6 +216,7 @@ function ExpenseTracker() {
   };
 
   const handleMainButtonClick = (e) => {
+    // console.log("clickedddddddddd");
     openModal();
     setButtonId(e.target.id);
     setIsEditing(false);
@@ -250,7 +251,9 @@ function ExpenseTracker() {
           handleFormInputChange={handleFormInputChange}
           expenseFormValues={expenseFormValues}
         />
+        {/* <br></br> */}
         <ExpensePieChart expensesList={expensesList} />
+
         <div className={styles.labelsDiv}>
           <button style={{ backgroundColor: "#A000FF" }}>Food</button>
           <button style={{ backgroundColor: "#FF9304" }}>Entertainment</button>

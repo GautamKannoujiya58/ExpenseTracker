@@ -52,6 +52,7 @@
   color: #ffffff;
   background: linear-gradient(45deg, #b5dc52, #89e148);
   margin-bottom: 16px;
+  cursor: pointer;
 }
 .expenseDiv {
   display: flex;
@@ -94,6 +95,7 @@
   color: #ffffff;
   background: linear-gradient(45deg, #ff9595, #ff4747, #ff3838);
   margin-bottom: 16px;
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 900px) {
@@ -104,7 +106,7 @@
     align-items: center;
     height: auto;
     margin-top: 20px;
-    /* margin-left: 70px; */
+    margin-bottom: 3vh;
   }
   .walletDiv {
     margin-bottom: 30px;
@@ -115,6 +117,7 @@
   }
   .expenseDiv {
     width: 80vw;
+    margin-bottom: 40px;
   }
 }
 

@@ -1,25 +1,25 @@
 import { BarChart, Bar, XAxis, YAxis } from "recharts";
 import PropTypes from "prop-types";
 import styles from "./TopExpenses.module.css";
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 
 function TopExpenses({ expensesList }) {
-  const [barchartWidth, setBarChartWidth] = useState(window.innerWidth);
-  useEffect(() => {
-    const handleScreenResize = () => {
-      if (window.innerWidth <= 900) {
-        setBarChartWidth(300);
-      } else {
-        setBarChartWidth(400);
-      }
-    };
-    window.addEventListener("resize", handleScreenResize);
+  // const [barchartWidth, setBarChartWidth] = useState(window.innerWidth);
+  // useEffect(() => {
+  //   const handleScreenResize = () => {
+  //     if (window.innerWidth <= 900) {
+  //       setBarChartWidth(300);
+  //     } else {
+  //       setBarChartWidth(200);
+  //     }
+  //   };
+  //   window.addEventListener("resize", handleScreenResize);
 
-    // cleanup function
-    return () => {
-      window.removeEventListener("resize", handleScreenResize);
-    };
-  }, []);
+  //   // cleanup function
+  //   return () => {
+  //     window.removeEventListener("resize", handleScreenResize);
+  //   };
+  // }, []);
   console.log("expensesList from top>>", expensesList);
   let entertainmentAmt = 0;
   let foodAmt = 0;
@@ -56,7 +56,7 @@ function TopExpenses({ expensesList }) {
     <>
       <div className={styles.topExpensesMainDiv}>
         <BarChart
-          width={barchartWidth} // Width of the chart
+          width={300} // Width of the chart
           height={350} // Height of the chart
           data={data} // Data array containing the values for bars
           layout="vertical" // This makes the bars horizontal
