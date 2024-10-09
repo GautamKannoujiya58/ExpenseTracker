@@ -65,6 +65,10 @@ function RecentTransactions({
 
   return (
     <>
+      <div className={styles.headingsDiv}>
+        <h1>Recent Transactions</h1>
+        <h1>Top Expenses</h1>
+      </div>
       <div className={styles.recentMainDiv}>
         <div className={styles.recentTransactionsDiv}>
           {currentExpenseToDisplay.map((list) => (
