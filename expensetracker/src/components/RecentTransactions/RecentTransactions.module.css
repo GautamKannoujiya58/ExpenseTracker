@@ -1,3 +1,4 @@
+/* importing font from google font */
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap");
 .headingsDiv {
   display: flex;
@@ -16,7 +17,6 @@
   margin: auto;
   justify-content: space-between;
   width: 70vw;
-  /* gap: 8vw; */
 }
 
 .recentTransactionsDiv {
@@ -42,9 +42,9 @@
   padding: 8px;
 }
 .icon {
-  background-color: #d9d9d9; /* Change this to your desired color */
+  background-color: #d9d9d9;
   padding: 10px; /* Adjust the padding for icon size and spacing */
-  border-radius: 50%; /* Makes it circular, you can adjust/remove based on your design */
+  border-radius: 50%;
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -87,8 +87,6 @@
 }
 .editDeleteDiv button {
   border-style: none;
-  /* background-color: #f4bb4a; */
-  /* padding: 24px; */
 }
 .editDeleteDiv button:nth-of-type(1) {
   background-color: #ff3e3e;
@@ -144,6 +142,8 @@
   line-height: 27.58px;
   color: #ffffff;
 }
+
+/* Breakpoint styling */
 @media only screen and (max-width: 900px) {
   .headingsDiv {
     margin-top: -12vh;
@@ -151,7 +151,6 @@
   .recentMainDiv {
     flex-direction: column;
     margin: auto;
-    /* margin-top: 18vh; */
     height: auto;
     align-items: center;
     justify-content: space-around;

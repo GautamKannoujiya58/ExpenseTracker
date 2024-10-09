@@ -29,6 +29,7 @@
   cursor: none;
 }
 
+/* Breakpoint styling  */
 @media only screen and (max-width: 900px) {
   .transactionsMainDiv {
     flex-direction: column;
@@ -45,10 +46,6 @@
     width: 80vw;
     margin-top: -10vh;
     margin-bottom: 4vh;
-    /* margin-bottom: 4vh; */
-    /* margin-top: -10vh;
-    margin-bottom: 4vh;
-    margin-left: 8vw; */
   }
 }
 @media only screen and (max-width: 1300px) {
@@ -57,23 +54,3 @@
     justify-content: space-around;
   }
 }
-
-/* Second section styling below here */
-
-/* .secondSectionsHeading {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 8vh;
-  /* padding: 20px; */
-/* } */
-
-/* .secondSectionsHeading h1 {
-  width: 261px;
-  height: 32px;
-  font-family: "Ubuntu", sans-serif;
-  font-weight: 700;
-  font-style: italic;
-  font-size: 28px;
-  line-height: 32.17px;
-  color: #ffffff; */

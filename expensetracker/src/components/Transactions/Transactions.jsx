@@ -62,6 +62,7 @@ function Transactions({
   );
 }
 
+// Prop type validation
 Transactions.propTypes = {
   balance: PropTypes.number.isRequired,
   setBalance: PropTypes.func.isRequired,

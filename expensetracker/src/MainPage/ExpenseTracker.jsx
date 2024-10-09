@@ -216,7 +216,6 @@ function ExpenseTracker() {
   };
 
   const handleMainButtonClick = (e) => {
-    // console.log("clickedddddddddd");
     openModal();
     setButtonId(e.target.id);
     setIsEditing(false);
@@ -251,7 +250,6 @@ function ExpenseTracker() {
           handleFormInputChange={handleFormInputChange}
           expenseFormValues={expenseFormValues}
         />
-        {/* <br></br> */}
         <ExpensePieChart expensesList={expensesList} />
 
         <div className={styles.labelsDiv}>
@@ -262,7 +260,7 @@ function ExpenseTracker() {
         </div>
       </div>
 
-      {expense > 0 && (
+      {expense > 0 && ( // This method of rendering called as short-circuit evaluation (⚠️very useful)
         <RecentTransactions
           expensesList={expensesList}
           handleEditExpense={handleEditExpense}

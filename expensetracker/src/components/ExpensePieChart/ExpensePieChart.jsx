@@ -88,6 +88,7 @@ function ExpensePieChart({ expensesList }) {
   );
 }
 
+// Prop type validation
 ExpensePieChart.propTypes = {
   expensesList: PropTypes.array.isRequired,
 };

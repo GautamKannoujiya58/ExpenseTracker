@@ -17,9 +17,9 @@ select {
   top: 50%; /*Position from the top */
   left: 50%; /*Position from the left */
   transform: translate(-50%, -50%); /*Move to center */
-  width: 28vw; /*Set width */
-  height: 18vh; /*Set height */
-  border-radius: 15px; /*Rounded corners */
+  width: 28vw;
+  height: 18vh;
+  border-radius: 15px;
 }
 
 .addExpenseForm {
@@ -118,6 +118,8 @@ select {
     font-size: 12px;
   }
 }
+
+/* Breakpoint styling */
 @media only screen and (max-width: 1300px) {
   .addExpenseForm {
     width: auto;

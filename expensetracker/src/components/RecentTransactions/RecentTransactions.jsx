@@ -137,6 +137,8 @@ function RecentTransactions({
     </>
   );
 }
+
+// Prop type validation
 RecentTransactions.propTypes = {
   expensesList: PropTypes.array.isRequired,
   handleEditExpense: PropTypes.func.isRequired,

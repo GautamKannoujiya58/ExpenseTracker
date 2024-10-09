@@ -66,6 +66,8 @@ function TopExpenses({ expensesList }) {
     </>
   );
 }
+
+// Prop type validation
 TopExpenses.propTypes = {
   expensesList: PropTypes.array.isRequired,
 };

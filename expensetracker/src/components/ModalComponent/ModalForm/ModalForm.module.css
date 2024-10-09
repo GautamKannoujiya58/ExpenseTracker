@@ -3,16 +3,10 @@
   top: 50%; /* Position from the top */
   left: 50%; /* Position from the left */
   transform: translate(-50%, -50%); /* Move to center */
-  /* display: flex; */
-  /* flex-direction: column; */
-  /* align-items: start; Center the content inside the modal */
-  /* justify-content: space-between; */
-  width: 28vw; /* Set width */
-  height: 18vh; /* Set height */
-  border-radius: 15px; /* Rounded corners */
-  background-color: #efefefd9; /* Background color */
-
-  /* padding: 20px; /* Add padding for content */
+  width: 28vw;
+  height: 18vh;
+  border-radius: 15px;
+  background-color: #efefefd9;
 }
 
 .addModal h2 {
@@ -26,13 +20,7 @@
 }
 
 .addBalanceForm {
-  /* display: flex;
-  align-items: center;
-  justify-content: start;
-  flex-wrap: nowrap; */
   margin-left: 1.5vw;
-  /* height: auto;
-  width: auto; */
 }
 
 .addBalanceForm input {
@@ -48,6 +36,8 @@
   padding-left: 12px;
   margin-right: 12px;
 }
+
+/* For removing the default up-down button from input element */
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
@@ -81,18 +71,10 @@ input[type="number"]::-webkit-outer-spin-button {
   margin-right: 12px;
   cursor: pointer;
 }
-/*
-  */
+
+/* Breakpoint styling */
 @media only screen and (max-width: 1300px) {
-  /* .addBalanceForm {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: auto;
-    width: 100vw;
-  } */
   .addModal {
-    /* margin-left: 20px; */
     width: auto;
     height: auto;
   }
@@ -123,27 +105,4 @@ input[type="number"]::-webkit-outer-spin-button {
     margin-left: 10vw;
     margin-bottom: 4vw;
   }
-  /* .addModal {
-    width: 80vw;
-    /* height: auto; */
-  /* padding: 8vw; */
-  /* } */
-  /* .addBalanceForm {
-    flex-direction: column;
-    flex-wrap: nowrap;
-  } */
-  /* .addBalanceForm input {
-    width: 50px;
-  } */
 }
-/* @media only screen and (max-width: 1300px) {
-  .addModal {
-    width: 350px;
-    height: 250px;
-  }
-  .addBalanceForm form {
-    display: flex;
-    flex-direction: column;
-    width: 100vw;
-  }
-} */

@@ -98,6 +98,8 @@
   cursor: pointer;
 }
 
+/* Breakpoint styling */
+
 @media only screen and (max-width: 900px) {
   .transactionsDiv {
     flex-direction: column;

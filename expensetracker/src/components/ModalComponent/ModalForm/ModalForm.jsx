@@ -51,7 +51,7 @@ function ModalForm({
   );
 }
 
-// For warning propTypes validation (not much important)
+// Prop type validation
 ModalForm.propTypes = {
   modalIsOpen: PropTypes.bool.isRequired,
   closeModal: PropTypes.func.isRequired,

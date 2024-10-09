@@ -146,6 +146,7 @@ function AddExpenseForm({
     </>
   );
 }
+// Prop type validation
 AddExpenseForm.propTypes = {
   modalIsOpen: PropTypes.bool.isRequired,
   closeModal: PropTypes.func.isRequired,
