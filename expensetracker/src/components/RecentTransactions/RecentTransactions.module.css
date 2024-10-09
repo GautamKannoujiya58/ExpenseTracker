@@ -57,6 +57,7 @@
 }
 .titleDate p:nth-of-type(1) {
   margin-bottom: -9px;
+  white-space: nowrap;
   width: 59px;
   height: 22px;
   font-family: "Open Sans", sans-serif;
