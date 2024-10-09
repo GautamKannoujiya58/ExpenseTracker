@@ -162,7 +162,7 @@
     box-sizing: border-box; /* Include padding/border in width */
     display: flex; /* Use flexbox to control row layout */
     flex-wrap: nowrap;
-    height: 64vh;
+    height: 60vh;
     padding-bottom: 60px;
   }
 
