@@ -18,7 +18,5 @@
     width: 100vw;
     height: auto;
     box-sizing: border-box;
-    /* flex-wrap: nowrap; */
-    /* margin-left: -32px; */
   }
 }
