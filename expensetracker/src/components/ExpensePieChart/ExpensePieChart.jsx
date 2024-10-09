@@ -72,6 +72,8 @@ function ExpensePieChart({ expensesList }) {
             fill="#8884d8"
             dataKey="value"
             nameKey="name" // Important: Use the "nameKey" prop to show the correct labels
+            innerRadius={0}
+            stroke="transparent"
           >
             {data.map((entry, index) => (
               <Cell

@@ -94,7 +94,7 @@
   border-radius: 50px;
   padding: 4px;
   margin: 4px;
-  box-shadow: 0 2px 10px #484747cc; /* Shadow just beneath the button */
+  box-shadow: 0 4px 10px #484747cc; /* Shadow just beneath the button */
   transition: box-shadow 0.2s ease; /* Smooth shadow transition */
   cursor: pointer;
 }
@@ -161,8 +161,8 @@
     box-sizing: border-box; /* Include padding/border in width */
     display: flex; /* Use flexbox to control row layout */
     flex-wrap: nowrap;
-    height: auto;
-    /* overflow: hidden; */
+    height: 64vh;
+    padding-bottom: 60px;
   }
 
   .editDeleteDiv button:nth-of-type(1) {
@@ -181,8 +181,5 @@
   }
   .editDeleteButtons {
     padding: 1vw;
-  }
-  .nextPrevDiv {
-    margin-top: -4vh;
   }
 }

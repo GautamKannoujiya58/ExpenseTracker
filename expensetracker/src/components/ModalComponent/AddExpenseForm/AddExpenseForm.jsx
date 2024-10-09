@@ -17,7 +17,7 @@ function AddExpenseForm({
           isOpen={modalIsOpen}
           onRequestClose={closeModal}
         >
-          <h2>Add Expense</h2>
+          <h2>Add Expenses</h2>
 
           <form
             className={styles.addExpenseFormDiv}
@@ -63,6 +63,8 @@ function AddExpenseForm({
               </option>
             </select>
             <input
+              min="2010-01-01" // Set your minimum date here
+              max="2030-12-31" // Set your maximum date here
               placeholder="dd/mm/yyyy"
               type="date"
               id="date"
@@ -81,7 +83,7 @@ function AddExpenseForm({
           isOpen={modalIsOpen}
           onRequestClose={closeModal}
         >
-          <h2>Edit Expense</h2>
+          <h2>Edit Expenses</h2>
           <form
             className={styles.addExpenseFormDiv}
             onSubmit={handleExpenseSubmit}
@@ -126,6 +128,8 @@ function AddExpenseForm({
               </option>
             </select>
             <input
+              min="2010-01-01" // Set your minimum date here
+              max="2030-12-31" // Set your maximum date here
               placeholder="dd/mm/yyyy"
               type="date"
               id="date"

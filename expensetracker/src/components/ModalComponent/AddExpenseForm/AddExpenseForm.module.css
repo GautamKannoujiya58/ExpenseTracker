@@ -13,19 +13,19 @@ select {
 }
 
 .addExpenseForm {
-  position: fixed; /*Use fixed positioning */
+  position: relative; /*Use fixed positioning */
   top: 50%; /*Position from the top */
   left: 50%; /*Position from the left */
   transform: translate(-50%, -50%); /*Move to center */
   width: 28vw; /*Set width */
   height: 18vh; /*Set height */
   border-radius: 15px; /*Rounded corners */
-  background-color: #efefefd9; /*Background color */
 }
 
 .addExpenseForm {
+  padding-top: 8px;
   width: 27vw;
-  height: 33.5vh;
+  height: 35vh;
   border-radius: 15px;
   background-color: #efefefd9;
 }
@@ -59,6 +59,7 @@ select {
   padding: 4px;
   padding-left: 12px;
 }
+
 .addExpenseFormDiv button {
   width: 10vw;
   min-height: 5.6vh;
@@ -98,15 +99,22 @@ select {
     height: auto;
     padding: 2vw;
   }
+
   .addExpenseFormDiv input {
     width: 28vw;
   }
-  .addExpenseFormDiv button {
+  .addExpenseFormDiv button:nth-of-type(1) {
     height: auto;
     width: auto;
   }
-  .addExpenseForm select {
+  .addExpenseFormDiv button:nth-of-type(2) {
+    width: 28vw;
+    height: auto;
+  }
+
+  .addExpenseFormDiv select {
     width: 32vw;
+    height: 6vh;
     font-size: 12px;
   }
 }
@@ -118,11 +126,10 @@ select {
   .addExpenseFormDiv input {
     width: 28vw;
   }
-  .addExpenseFormDiv button {
-    height: auto;
-    width: auto;
+  .addExpenseFormDiv button:nth-of-type(1) {
+    width: 28vw;
   }
-  .addExpenseForm select {
-    width: auto;
+  .addExpenseFormDiv button:nth-of-type(2) {
+    width: 20vw;
   }
 }
