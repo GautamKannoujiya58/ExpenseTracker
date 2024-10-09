@@ -4,22 +4,6 @@ import styles from "./TopExpenses.module.css";
 // import { useEffect, useState } from "react";
 
 function TopExpenses({ expensesList }) {
-  // const [barchartWidth, setBarChartWidth] = useState(window.innerWidth);
-  // useEffect(() => {
-  //   const handleScreenResize = () => {
-  //     if (window.innerWidth <= 900) {
-  //       setBarChartWidth(300);
-  //     } else {
-  //       setBarChartWidth(200);
-  //     }
-  //   };
-  //   window.addEventListener("resize", handleScreenResize);
-
-  //   // cleanup function
-  //   return () => {
-  //     window.removeEventListener("resize", handleScreenResize);
-  //   };
-  // }, []);
   console.log("expensesList from top>>", expensesList);
   let entertainmentAmt = 0;
   let foodAmt = 0;

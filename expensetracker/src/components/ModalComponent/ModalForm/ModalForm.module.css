@@ -1,0 +1,149 @@
+.addModal {
+  position: fixed; /*Use fixed positioning */
+  top: 50%; /* Position from the top */
+  left: 50%; /* Position from the left */
+  transform: translate(-50%, -50%); /* Move to center */
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* align-items: start; Center the content inside the modal */
+  /* justify-content: space-between; */
+  width: 28vw; /* Set width */
+  height: 18vh; /* Set height */
+  border-radius: 15px; /* Rounded corners */
+  background-color: #efefefd9; /* Background color */
+
+  /* padding: 20px; /* Add padding for content */
+}
+
+.addModal h2 {
+  width: 9vw;
+  height: 3.5vh;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 700;
+  font-size: 4vh;
+  white-space: nowrap;
+  padding-left: 1.5vw;
+}
+
+.addBalanceForm {
+  /* display: flex;
+  align-items: center;
+  justify-content: start;
+  flex-wrap: nowrap; */
+  margin-left: 1.5vw;
+  /* height: auto;
+  width: auto; */
+}
+
+.addBalanceForm input {
+  width: 10vw;
+  height: 5vh;
+  border-radius: 15px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #919191;
+  border-style: none;
+  padding: 4px;
+  padding-left: 12px;
+  margin-right: 12px;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+.addBalanceForm button:nth-of-type(1) {
+  width: 7vw;
+  min-height: 5.6vh;
+  border-radius: 15px;
+  background-color: #f4bb4a;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: #ffffff;
+  border-style: none;
+  padding: 4px;
+  margin-right: 12px;
+  cursor: pointer;
+}
+.addBalanceForm button:nth-of-type(2) {
+  width: 5.6vw;
+  height: 5.6vh;
+  border-radius: 15px;
+  background-color: #d9d9d9;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #000000;
+  border-style: none;
+  padding: 4px;
+  margin-right: 12px;
+  cursor: pointer;
+}
+/*
+  */
+@media only screen and (max-width: 1300px) {
+  /* .addBalanceForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: auto;
+    width: 100vw;
+  } */
+  .addModal {
+    /* margin-left: 20px; */
+    width: auto;
+    height: auto;
+  }
+  .addModal h2 {
+    padding: 10px;
+    margin-left: 10vw;
+  }
+
+  .addBalanceForm form {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    margin: 0; /* Reset form margin */
+    padding: 0; /* Reset padding */
+  }
+  .addBalanceForm input {
+    width: 45vw;
+    margin-left: 10vw;
+    margin-bottom: 4vw;
+  }
+  .addBalanceForm button:nth-of-type(1) {
+    width: 50vw;
+    margin-left: 10vw;
+    margin-bottom: 4vw;
+  }
+  .addBalanceForm button:nth-of-type(2) {
+    width: 50vw;
+    margin-left: 10vw;
+    margin-bottom: 4vw;
+  }
+  /* .addModal {
+    width: 80vw;
+    /* height: auto; */
+  /* padding: 8vw; */
+  /* } */
+  /* .addBalanceForm {
+    flex-direction: column;
+    flex-wrap: nowrap;
+  } */
+  /* .addBalanceForm input {
+    width: 50px;
+  } */
+}
+/* @media only screen and (max-width: 1300px) {
+  .addModal {
+    width: 350px;
+    height: 250px;
+  }
+  .addBalanceForm form {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+  }
+} */

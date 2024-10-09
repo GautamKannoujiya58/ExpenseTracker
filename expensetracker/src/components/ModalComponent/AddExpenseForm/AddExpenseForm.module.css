@@ -1,0 +1,128 @@
+button {
+  cursor: pointer;
+  box-shadow: 0 2px 4px #484747cc;
+  transition: box-shadow 0.2s ease;
+}
+input {
+  box-shadow: 0 2px 4px #484747cc; /* Shadow just beneath the button */
+  transition: box-shadow 0.2s ease; /* Smooth shadow transition */
+}
+select {
+  box-shadow: 0 2px 4px #484747cc;
+  transition: box-shadow 0.2s ease;
+}
+
+.addExpenseForm {
+  position: fixed; /*Use fixed positioning */
+  top: 50%; /*Position from the top */
+  left: 50%; /*Position from the left */
+  transform: translate(-50%, -50%); /*Move to center */
+  width: 28vw; /*Set width */
+  height: 18vh; /*Set height */
+  border-radius: 15px; /*Rounded corners */
+  background-color: #efefefd9; /*Background color */
+}
+
+.addExpenseForm {
+  width: 27vw;
+  height: 33.5vh;
+  border-radius: 15px;
+  background-color: #efefefd9;
+}
+.addExpenseForm h2 {
+  width: 9vw;
+  height: 3.5vh;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 700;
+  font-size: 4vh;
+  white-space: nowrap;
+  padding-left: 1.5vw;
+}
+.addExpenseFormDiv {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5vw;
+  padding-top: 0;
+}
+.addExpenseForm input {
+  width: 10vw;
+  height: 5vh;
+  border-radius: 15px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #919191;
+  border-style: none;
+  padding: 4px;
+  padding-left: 12px;
+}
+.addExpenseFormDiv button {
+  width: 10vw;
+  min-height: 5.6vh;
+  border-radius: 15px;
+  background-color: #f4bb4a;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #ffffff;
+  border-style: none;
+  padding: 4px;
+}
+.addExpenseFormDiv button:nth-of-type(2) {
+  background-color: #d9d9d9;
+  color: #000000;
+  font-weight: 400;
+  width: 7vw;
+}
+.addExpenseForm select {
+  width: 11vw;
+  height: 5vh;
+  border-radius: 15px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #000000;
+  border-style: none;
+  padding: 4px;
+}
+.addExpenseForm select option {
+  color: #000000;
+}
+
+@media only screen and (max-width: 600px) {
+  .addExpenseForm {
+    width: 80vw;
+    height: auto;
+    padding: 2vw;
+  }
+  .addExpenseFormDiv input {
+    width: 28vw;
+  }
+  .addExpenseFormDiv button {
+    height: auto;
+    width: auto;
+  }
+  .addExpenseForm select {
+    width: 32vw;
+    font-size: 12px;
+  }
+}
+@media only screen and (max-width: 1300px) {
+  .addExpenseForm {
+    width: auto;
+    height: auto;
+  }
+  .addExpenseFormDiv input {
+    width: 28vw;
+  }
+  .addExpenseFormDiv button {
+    height: auto;
+    width: auto;
+  }
+  .addExpenseForm select {
+    width: auto;
+  }
+}

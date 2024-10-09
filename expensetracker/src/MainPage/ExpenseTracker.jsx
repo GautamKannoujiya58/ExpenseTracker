@@ -124,7 +124,7 @@ function ExpenseTracker() {
     }
     setBalance((prev) => prev + Number(addedBalance));
     closeModal();
-    enqueueSnackbar(`Balance ${balance} added successfully`, {
+    enqueueSnackbar(`₹${addedBalance} added successfully`, {
       variant: "success",
       autoHideDuration: 2000,
     });

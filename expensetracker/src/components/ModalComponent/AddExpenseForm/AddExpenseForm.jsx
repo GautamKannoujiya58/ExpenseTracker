@@ -1,5 +1,6 @@
 import Modal from "react-modal";
 import PropTypes from "prop-types";
+import styles from "./AddExpenseForm.module.css";
 function AddExpenseForm({
   modalIsOpen,
   closeModal,
@@ -11,9 +12,17 @@ function AddExpenseForm({
   return (
     <>
       {buttonId === "addExpense" ? (
-        <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
+        <Modal
+          className={styles.addExpenseForm}
+          isOpen={modalIsOpen}
+          onRequestClose={closeModal}
+        >
           <h2>Add Expense</h2>
-          <form onSubmit={handleExpenseSubmit}>
+
+          <form
+            className={styles.addExpenseFormDiv}
+            onSubmit={handleExpenseSubmit}
+          >
             <input
               name="title"
               placeholder="title"
@@ -67,9 +76,16 @@ function AddExpenseForm({
           </form>
         </Modal>
       ) : (
-        <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
+        <Modal
+          className={styles.addExpenseForm}
+          isOpen={modalIsOpen}
+          onRequestClose={closeModal}
+        >
           <h2>Edit Expense</h2>
-          <form onSubmit={handleExpenseSubmit}>
+          <form
+            className={styles.addExpenseFormDiv}
+            onSubmit={handleExpenseSubmit}
+          >
             <input
               name="title"
               placeholder="title"

@@ -1,6 +1,7 @@
 import Modal from "react-modal";
 import AddExpenseForm from "../AddExpenseForm/AddExpenseForm";
 import PropTypes from "prop-types";
+import styles from "./ModalForm.module.css";
 function ModalForm({
   modalIsOpen,
   closeModal,
@@ -16,19 +17,25 @@ function ModalForm({
   return (
     <>
       {buttonId === "addBalance" ? (
-        <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
+        <Modal
+          className={styles.addModal}
+          isOpen={modalIsOpen}
+          onRequestClose={closeModal}
+        >
           <h2>Add balance</h2>
-          <form onSubmit={handleBalanceSubmit}>
-            <input
-              type="number"
-              placeholder="balance amount"
-              value={addedBalance}
-              onChange={(e) => setAddedBalance(e.target.value)}
-              required
-            ></input>
-            <button type="submit">Add balance</button>
-            <button onClick={closeModal}>Cancel</button>
-          </form>
+          <div className={styles.addBalanceForm}>
+            <form onSubmit={handleBalanceSubmit}>
+              <input
+                type="number"
+                placeholder="balance amount"
+                value={addedBalance}
+                onChange={(e) => setAddedBalance(e.target.value)}
+                required
+              ></input>
+              <button type="submit">Add balance</button>
+              <button onClick={closeModal}>Cancel</button>
+            </form>
+          </div>
         </Modal>
       ) : (
         <AddExpenseForm
